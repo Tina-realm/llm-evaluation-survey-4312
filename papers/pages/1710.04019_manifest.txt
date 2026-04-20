@@ -1,0 +1,20 @@
+PDF: papers/1710.04019.pdf
+Total pages: 44
+Pages per chunk: 3
+
+Chunks:
+  1710.04019_chunk_001.pdf: pages 1-3
+  1710.04019_chunk_002.pdf: pages 4-6
+  1710.04019_chunk_003.pdf: pages 7-9
+  1710.04019_chunk_004.pdf: pages 10-12
+  1710.04019_chunk_005.pdf: pages 13-15
+  1710.04019_chunk_006.pdf: pages 16-18
+  1710.04019_chunk_007.pdf: pages 19-21
+  1710.04019_chunk_008.pdf: pages 22-24
+  1710.04019_chunk_009.pdf: pages 25-27
+  1710.04019_chunk_010.pdf: pages 28-30
+  1710.04019_chunk_011.pdf: pages 31-33
+  1710.04019_chunk_012.pdf: pages 34-36
+  1710.04019_chunk_013.pdf: pages 37-39
+  1710.04019_chunk_014.pdf: pages 40-42
+  1710.04019_chunk_015.pdf: pages 43-44

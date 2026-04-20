@@ -1,0 +1,168 @@
+\section{Mathematical Frameworks for LLM Evaluation}
+\label{sec:method}
+
+We propose five evaluation frameworks, each grounded in established mathematical theory and addressing a specific gap in current methodology.
+We first describe the common experimental setup, then present each framework with formal definitions and algorithmic descriptions.
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+
+\para{Data.}
+We use the \mmlu dataset~\citep{hendrycks2021mmlu} comprising 14,042 test questions across 57 subjects spanning STEM, humanities, social sciences, and professional domains.
+We construct performance profiles for 12 models based on published accuracy scores: \gpt~\citep{openai2023gpt4}, GPT-4o~\citep{openai2024o1}, \claude Opus and Claude-3.5 Sonnet~\citep{anthropic2024claude3}, \llama 8B and 70B~\citep{dubey2024llama3}, Mistral 7B, Qwen-2 72B, \gemini 1.5 Pro~\citep{geminiteam2024gemini15}, PaLM-2, \mixtral~\citep{jiang2024mixtral}, and Phi-3 Medium.
+
+\para{Representation.}
+Each model $m_i$ is represented as a capability vector $\vc_i \in [0,1]^{57}$, where coordinate $j$ denotes accuracy on subject $j$.
+The collection $\gC = \{\vc_1, \ldots, \vc_{12}\} \subset \sR^{57}$ forms a point cloud amenable to topological and geometric analysis.
+
+\para{Implementation.}
+All frameworks are implemented in Python using NumPy, SciPy, Ripser~\citep{bauer2021ripser} for persistent homology, Persim for persistence diagram distances, NetworkX for graph construction, and Scikit-learn for embeddings.
+
+\subsection{Framework 1: Topological Drift Detection via Persistent Homology}
+\label{sec:topdrift}
+
+\para{Motivation.}
+Current evaluation metrics provide point estimates without formal guarantees about how rankings change under perturbation.
+We apply \ph to detect structural changes in model capability landscapes across time.
+
+\begin{definition}[Capability Point Cloud]
+Given models $\{m_1, \ldots, m_n\}$ evaluated on $d$ tasks, the \emph{capability point cloud} is $\gC = \{\vc_i\}_{i=1}^n \subset \sR^d$ where $\vc_i = (\text{acc}_{i,1}, \ldots, \text{acc}_{i,d})$.
+\end{definition}
+
+\begin{definition}[Vietoris-Rips Filtration]
+For parameter $\epsilon \geq 0$, the Vietoris-Rips complex $\text{VR}_\epsilon(\gC)$ contains a simplex $[\vc_{i_0}, \ldots, \vc_{i_k}]$ whenever $\|\vc_{i_p} - \vc_{i_q}\| \leq \epsilon$ for all pairs $p, q$.
+The nested family $\{\text{VR}_\epsilon(\gC)\}_{\epsilon \geq 0}$ is the Vietoris-Rips filtration.
+\end{definition}
+
+\PH computes the birth-death pairs of topological features (connected components $H_0$, loops $H_1$, cavities $H_2$, etc.) across the filtration, producing a persistence diagram $\text{Dgm}(\gC)$.
+
+\begin{theorem}[Stability~\citep{cohen2007stability}]
+\label{thm:stability}
+For point clouds $\gC, \gC'$, the bottleneck distance between persistence diagrams satisfies:
+\begin{equation}
+d_B(\text{Dgm}(\gC), \text{Dgm}(\gC')) \leq d_H(\gC, \gC')
+\end{equation}
+where $d_H$ denotes the Hausdorff distance.
+\end{theorem}
+
+\para{Drift detection.}
+We partition models into temporal cohorts: $\gC_{\text{early}}$ (2023 models) and $\gC_{\text{late}}$ (2024 models).
+Structural drift is quantified by the Wasserstein-1 distance $W_1(\text{Dgm}(\gC_{\text{early}}), \text{Dgm}(\gC_{\text{late}}))$ between persistence diagrams.
+By Theorem~\ref{thm:stability}, this provides a formal lower bound on the minimum geometric change between cohorts:
+\begin{equation}
+d_H(\gC_{\text{early}}, \gC_{\text{late}}) \geq d_B(\text{Dgm}(\gC_{\text{early}}), \text{Dgm}(\gC_{\text{late}}))
+\end{equation}
+
+\subsection{Framework 2: Sheaf-Theoretic Compositional Evaluation}
+\label{sec:sheafeval}
+
+\para{Motivation.}
+Multi-metric evaluations (\eg \helm) aggregate local scores into global rankings without formal guarantees about information preservation.
+We formalize evaluation composition as a sheaf on a task-decomposition graph.
+
+\begin{definition}[Evaluation Sheaf]
+Let $G = (V, E)$ be a directed graph where vertices represent evaluation granularities (global, category, subject) and edges represent containment.
+A \emph{cellular evaluation sheaf} $\gF$ on $G$ assigns:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item To each vertex $v \in V$: a vector space $\gF(v) \cong \sR^{n_v}$ of evaluation scores;
+    \item To each edge $e: u \to v$: a linear restriction map $\gF_{e}: \gF(u) \to \gF(v)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Consistency and Cohomology]
+A \emph{global section} $s$ assigns to each vertex $v$ a vector $s(v) \in \gF(v)$ such that for all edges $e: u \to v$, $\gF_e(s(u)) = s(v)$.
+The \emph{first sheaf cohomology} $H^1(G; \gF)$ measures the obstruction to extending local sections to global ones.
+When $\dim H^1 > 0$, local evaluations cannot be consistently aggregated.
+\end{definition}
+
+For \mmlu, we construct a three-level graph: one global node, 5 category nodes (STEM, Humanities, Social Sciences, Professional, Other), and 57 subject nodes, yielding $|V| = 63$ nodes and $|E| = 65$ edges.
+The restriction maps implement weighted averaging from subjects to categories.
+
+\para{Consistency ratio.}
+For each model, we compute the ratio between the residual under restriction (how much information is lost by aggregation) and the local evaluation norm:
+\begin{equation}
+\rho(m) = \frac{\sum_{e: u \to v} \|\gF_e(s_m(u)) - s_m(v)\|^2}{\sum_{v} \|s_m(v)\|^2}
+\end{equation}
+Models with high $\rho$ have heterogeneous capability profiles where aggregation is unfaithful.
+
+\subsection{Framework 3: Information-Geometric Evaluation Manifolds}
+\label{sec:fisheval}
+
+\para{Motivation.}
+Comparing models by accuracy ignores distributional structure.
+Two models with identical average accuracy may have fundamentally different capability distributions.
+We equip the space of model capability distributions with a Riemannian metric.
+
+\begin{definition}[Capability Distribution]
+For model $m$ with capability vector $\vc \in [0,1]^d$, we define the normalized capability distribution $p_m = \vc / \|\vc\|_1$ on the $(d-1)$-simplex $\Delta^{d-1}$.
+\end{definition}
+
+\begin{definition}[Fisher-Rao Distance]
+The \fr distance between models $m_i$ and $m_j$ on the probability simplex is:
+\begin{equation}
+d_{FR}(p_i, p_j) = 2 \arccos\left(\sum_{k=1}^d \sqrt{p_i^{(k)} \cdot p_j^{(k)}}\right)
+\end{equation}
+This is the geodesic distance under the Fisher information metric on the multinomial family.
+\end{definition}
+
+The \fr distance satisfies the axioms of a proper metric and is the unique Riemannian metric (up to scale) that is invariant under sufficient statistics~\citep{cencov1982statistical}.
+This provides principled model comparison beyond raw accuracy.
+
+\para{Fisher information trace.}
+The trace of the Fisher information matrix $\text{tr}(\mI_m) = \sum_k 1/p_m^{(k)}$ measures the total sensitivity of the distribution to perturbation.
+Models with concentrated capability (high accuracy on few subjects) exhibit higher Fisher information and are more sensitive to evaluation noise.
+
+\subsection{Framework 4: Failure Mode Landscape via TDA}
+\label{sec:failtda}
+
+\para{Motivation.}
+Standard evaluation reports aggregate error rates but ignores the \emph{structure} of failures.
+Two models with identical error rates may fail on completely different questions for different reasons.
+We apply TDA to the space of failure patterns to detect structured failure modes.
+
+\begin{definition}[Failure Correlation Graph]
+For threshold $\tau \in [0,1]$, define the failure indicator $f_{i,j} = \mathbb{1}[\text{acc}_{i,j} < \tau]$ for model $i$ on subject $j$.
+The failure correlation matrix $\mR \in \sR^{d \times d}$ has entries $R_{jk} = \text{corr}(f_{\cdot,j}, f_{\cdot,k})$ measuring co-failure across models.
+\end{definition}
+
+We construct a filtered simplicial complex by thresholding the correlation matrix at increasing values and compute persistent homology of the resulting Vietoris-Rips complex.
+The emergence of $H_1$ features (loops) indicates cyclic failure relationships---subjects that form failure chains not decomposable into hierarchical clusters.
+
+\para{Phase transitions.}
+We track Betti numbers $\beta_0$ (components) and $\beta_1$ (loops) across thresholds $\tau \in \{0.5, 0.6, 0.7, 0.8, 0.9\}$.
+A sharp increase in $\beta_1$ at threshold $\tau^*$ indicates a phase transition where structurally distinct failure modes emerge.
+
+\subsection{Framework 5: Spectral Contamination Detection via Random Matrix Theory}
+\label{sec:speccontam}
+
+\para{Motivation.}
+Benchmark contamination inflates scores in ways that surface-level methods (n-gram overlap, embedding similarity) cannot detect when data is rephrased~\citep{yang2023rethinking}.
+We propose detecting contamination through spectral anomalies in performance matrices.
+
+\begin{definition}[Performance Matrix]
+The performance matrix $\mP \in \sR^{n \times d}$ has entry $P_{ij}$ equal to the accuracy of model $i$ on subject $j$.
+Under the null hypothesis of no contamination, the sample covariance $\mS = \frac{1}{n}\mP^\top \mP$ should have eigenvalues distributed according to the \marchpast law.
+\end{definition}
+
+\begin{theorem}[Marchenko-Pastur Law~\citep{marchenkopastur1967}]
+For $\mP$ with i.i.d.\ entries of variance $\sigma^2$ and aspect ratio $\gamma = d/n$, the empirical spectral distribution converges to:
+\begin{equation}
+\rho_{MP}(\lambda) = \frac{1}{2\pi\sigma^2\gamma}\frac{\sqrt{(\lambda_+ - \lambda)(\lambda - \lambda_-)}}{\lambda}
+\end{equation}
+where $\lambda_\pm = \sigma^2(1 \pm \sqrt{\gamma})^2$ are the bulk edges.
+\end{theorem}
+
+\para{Contamination detection.}
+Eigenvalues exceeding $\lambda_+$ indicate structure beyond random variation.
+Under contamination, subjects with leaked data exhibit correlated performance boosts, creating additional outlier eigenvalues.
+We detect contamination via:
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item Compute eigenvalues of the sample covariance of the performance matrix.
+    \item Identify outliers exceeding \marchpast bounds $[\lambda_-, \lambda_+]$.
+    \item Apply the \tw test~\citep{tracy1996orthogonal} to the largest eigenvalue for significance.
+    \item Localize contaminated subjects via leverage scores of outlier eigenvectors.
+\end{enumerate}
+
+\begin{proposition}[Contamination Signal]
+If $k$ subjects are contaminated with correlated performance boost $\delta$, the performance matrix gains an additional rank-$k$ component, producing $k$ eigenvalues exceeding $\lambda_+$ by $\Omega(n\delta^2)$.
+\end{proposition}

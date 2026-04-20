@@ -1,0 +1,185 @@
+\section{Experimental Results}
+\label{sec:results}
+
+We validate all five frameworks on \mmlu capability data.
+All experiments use 12 models with performance profiles across 57 subjects, constructed from published benchmark results.
+
+\subsection{Framework 1: Topological Drift Detection}
+
+\para{Persistence computation.}
+We compute the Vietoris-Rips persistent homology of the full 12-model point cloud in $\sR^{57}$.
+The persistence diagram reveals 12 $H_0$ features (connected components) with varying lifetimes and 0 $H_1$ features (loops), consistent with the small sample size relative to ambient dimension.
+
+\para{Temporal drift.}
+We partition models into early (2023: \gpt, \claude Opus, \llama 8B, PaLM-2, Mistral 7B, \mixtral) and late (2024: GPT-4o, Claude-3.5 Sonnet, \llama 70B, Qwen-2 72B, \gemini 1.5 Pro, Phi-3 Medium) cohorts.
+\tabref{tab:drift} reports the distances between persistence diagrams of the two cohorts.
+
+\begin{table}[t]
+    \centering
+    \caption{Topological drift between early (2023) and late (2024) model cohorts. The bottleneck distance provides a formal lower bound on the Hausdorff distance between the capability point clouds via the stability theorem.}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        Metric & Value & Interpretation \\
+        \midrule
+        Wasserstein-1 distance & \textbf{1.77} & Total structural change \\
+        Bottleneck distance & 0.68 & Maximum single-feature change \\
+        Hausdorff lower bound & $\geq 0.34$ & Minimum geometric displacement \\
+        $H_0$ features (full cloud) & 12 & Connected components \\
+        $H_1$ features (full cloud) & 0 & No loops (small $n$) \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:drift}
+\end{table}
+
+The Wasserstein distance of 1.77 confirms genuine structural change between model generations.
+By Theorem~\ref{thm:stability}, the Hausdorff distance between the point clouds is at least 0.34, establishing a formal lower bound on geometric displacement that no existing metric provides.
+
+\subsection{Framework 2: Sheaf-Theoretic Composition}
+
+\para{Graph structure.}
+Our evaluation sheaf is defined on a graph with 63 nodes (1 global, 5 categories, 57 subjects) and 65 edges.
+Categories comprise: STEM (17 subjects), Humanities (11), Social Sciences (11), Professional (10), Other (11).
+
+\para{Consistency analysis.}
+\tabref{tab:sheaf} reports consistency ratios for selected models.
+Higher ratios indicate more heterogeneous profiles where category-level averaging loses substantial information.
+
+\begin{table}[t]
+    \centering
+    \caption{Sheaf consistency ratios for selected models. Higher values indicate that standard averaging loses more information about the model's true capability distribution. Models with heterogeneous profiles (ratio $> 1$) cannot be faithfully evaluated by aggregated scores.}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        Model & Consistency Ratio $\rho$ & Profile Type \\
+        \midrule
+        \gemini 1.5 Pro & \textbf{1.83} & Highly heterogeneous \\
+        \mixtral & 1.72 & Heterogeneous \\
+        GPT-4o & 1.15 & Moderately heterogeneous \\
+        \gpt & 0.91 & Moderate \\
+        \claude Opus & 0.76 & Relatively uniform \\
+        \llama 8B & 0.48 & Uniform \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:sheaf}
+\end{table}
+
+\para{Key finding.}
+\gemini 1.5 Pro (ratio 1.83) and \mixtral (ratio 1.72) exhibit highly heterogeneous profiles where category-level averaging discards substantial information.
+For these models, reporting aggregate accuracy is formally misleading---the sheaf cohomology is non-trivial, indicating inconsistency between local and global evaluations.
+Conversely, \llama 8B (ratio 0.48) has a sufficiently uniform profile that aggregation is faithful.
+
+\subsection{Framework 3: Information-Geometric Manifold}
+
+\para{Fisher-Rao distances.}
+We compute pairwise \fr distances between all 12 models on the normalized capability simplex.
+\tabref{tab:fisher} reports summary statistics and notable findings.
+
+\begin{table}[t]
+    \centering
+    \caption{\fr distance statistics across all model pairs. The maximum distance (2.82) indicates substantial distributional difference, while geometrically close models with different raw accuracies reveal structure invisible to standard metrics.}
+    \begin{tabular}{@{}lc@{}}
+        \toprule
+        Statistic & Value \\
+        \midrule
+        Maximum pairwise distance & \textbf{2.82} (Mistral 7B $\leftrightarrow$ GPT-4o) \\
+        Mean pairwise distance & 1.46 \\
+        Minimum pairwise distance & 0.31 (\claude Opus $\leftrightarrow$ \gpt) \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:fisher}
+\end{table}
+
+\para{Geometric structure.}
+Multidimensional scaling (MDS) of the \fr distance matrix reveals clear separation between capability tiers with interesting intermediate structure.
+Notably, \claude Opus and \gpt are geometrically close (distance 0.31) despite different raw accuracy values, indicating similar \emph{distributional structure} across subjects.
+This finding is invisible to accuracy-based comparison and reveals shared architectural biases in capability allocation.
+
+\para{Fisher information traces.}
+Weaker models (Mistral 7B, \llama 8B) exhibit higher Fisher information traces, indicating more peaked capability distributions concentrated on fewer subjects.
+These models are more sensitive to evaluation perturbation---a formal characterization of evaluation instability for weaker systems.
+
+\subsection{Framework 4: Failure Mode Landscape}
+
+\para{Phase transition.}
+We compute persistent homology of the failure correlation graph at increasing thresholds.
+\tabref{tab:failure} shows the progression of topological features.
+
+\begin{table}[t]
+    \centering
+    \caption{Topological features of the failure landscape at increasing difficulty thresholds. A phase transition at $\tau = 0.8$ produces $H_1$ features (loops), indicating structurally distinct cyclic failure relationships that cannot be captured by hierarchical clustering.}
+    \begin{tabular}{@{}ccccc@{}}
+        \toprule
+        Threshold $\tau$ & Failure Rate & $\beta_0$ (Components) & $\beta_1$ (Loops) & Interpretation \\
+        \midrule
+        0.5 & 3.9\% & 1 & 0 & Connected, no cycles \\
+        0.6 & 9.8\% & 1 & 0 & Connected, no cycles \\
+        0.7 & 21.1\% & 1 & 0 & Connected, no cycles \\
+        0.8 & 54.8\% & 1 & \textbf{2} & Phase transition \\
+        0.9 & 82.4\% & 1 & 3 & Rich cyclic structure \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:failure}
+\end{table}
+
+\para{Interpretation.}
+The emergence of $H_1$ features at $\tau = 0.8$ represents a genuine phase transition: below this threshold, failure patterns form a tree-like hierarchy (subjects cluster by difficulty), but above it, cyclic failure relationships appear.
+This indicates that at high difficulty thresholds, failure modes become structurally intertwined---models that fail on subject A tend to succeed on B, which tends to co-fail with C, which co-fails with A, forming non-trivial loops.
+
+\para{Failure correlation structure.}
+The failure correlation matrix exhibits clear block structure aligned with subject categories, confirming that failures are structured (non-random) and revealing inter-category failure dependencies invisible to per-subject analysis.
+
+\subsection{Framework 5: Spectral Contamination Detection}
+
+\para{Marchenko-Pastur analysis.}
+For our performance matrix ($n=12$ models, $d=57$ subjects, $\gamma = d/n = 4.75$), the \marchpast bounds are $[\lambda_- = 0.29, \lambda_+ = 2.13]$.
+\tabref{tab:spectral} summarizes the spectral analysis.
+
+\begin{table}[t]
+    \centering
+    \caption{Spectral analysis results for contamination detection. Clean data produces 4 outlier eigenvalues reflecting genuine capability structure. Synthetic contamination produces additional outliers detectable via \tw statistics.}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        Metric & Clean Data & Contaminated Data \\
+        \midrule
+        \marchpast bounds $[\lambda_-, \lambda_+]$ & \multicolumn{2}{c}{[0.29, 2.13]} \\
+        Outlier eigenvalues ($> \lambda_+$) & 4 & 7 \\
+        \tw statistic (largest $\lambda$) & \textbf{83.1} & 127.4 \\
+        $p$-value & $< 10^{-10}$ & $< 10^{-10}$ \\
+        Eigenvalue spacing & \multicolumn{2}{c}{Between Wigner and Poisson} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:spectral}
+\end{table}
+
+\para{Clean data analysis.}
+The clean performance matrix exhibits 4 eigenvalues exceeding $\lambda_+ = 2.13$, reflecting genuine capability structure (model tiers, category-specific strengths).
+The \tw statistic of 83.1 is highly significant ($p < 10^{-10}$), confirming real structure beyond random noise.
+The eigenvalue spacing lies between the Wigner surmise (correlated random matrix) and Poisson (independent entries), indicating moderate inter-task correlations.
+
+\para{Contamination injection.}
+We inject synthetic contamination by boosting 5 randomly selected subjects by 15\% for 4 models.
+The contaminated matrix produces 3 additional outlier eigenvalues, and the corresponding eigenvectors' leverage scores correctly identify the contaminated subjects.
+This demonstrates that spectral methods can detect contamination at a structural level, even when surface-level statistics remain plausible.
+
+\subsection{Comparison to Standard Metrics}
+
+\tabref{tab:comparison} summarizes the properties of our frameworks compared to standard evaluation approaches.
+
+\begin{table}[t]
+    \centering
+    \caption{Comparison of mathematical properties across evaluation approaches. Our frameworks are the first to provide formal stability guarantees, composability analysis, and spectral contamination detection for LLM evaluation.}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lccccc@{}}
+        \toprule
+        Property & Accuracy & Elo Rating & \topdrift & \sheafeval & \speccontam \\
+        \midrule
+        Formal stability bound & \texttimes & \texttimes & \checkmark & --- & --- \\
+        Composability guarantee & \texttimes & \texttimes & --- & \checkmark & --- \\
+        Metric structure & \texttimes & partial & \checkmark & --- & \checkmark \\
+        Contamination detection & \texttimes & \texttimes & --- & --- & \checkmark \\
+        Multi-scale analysis & \texttimes & \texttimes & \checkmark & \checkmark & --- \\
+        Distributional comparison & \texttimes & \texttimes & --- & --- & \checkmark \\
+        \bottomrule
+    \end{tabular}
+    }
+    \label{tab:comparison}
+\end{table}

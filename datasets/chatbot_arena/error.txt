@@ -1,0 +1,6 @@
+{
+  "original_dataset": "lmsys/chatbot_arena_conversations",
+  "status": "used_alternative",
+  "note": "Original dataset is gated. Downloaded lmsys/mt_bench_human_judgments instead.",
+  "actual_dataset": "lmsys/mt_bench_human_judgments"
+}

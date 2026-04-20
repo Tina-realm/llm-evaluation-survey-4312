@@ -1,0 +1,416 @@
+[
+  {
+    "id": "2009.03300",
+    "title": "Measuring Massive Multitask Language Understanding",
+    "authors": [
+      "Dan Hendrycks",
+      "Collin Burns",
+      "Steven Basart"
+    ],
+    "year": 2020,
+    "abstract": "We propose a new test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more. To attain high accuracy on this test, models must possess extensive world knowledge and problem solving ability. We find that wh",
+    "categories": [
+      "cs.CY",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2107.03374",
+    "title": "Evaluating Large Language Models Trained on Code",
+    "authors": [
+      "Mark Chen",
+      "Jerry Tworek",
+      "Heewoo Jun"
+    ],
+    "year": 2021,
+    "abstract": "We introduce Codex, a GPT language model fine-tuned on publicly available code from GitHub, and study its Python code-writing capabilities. A distinct production version of Codex powers GitHub Copilot. On HumanEval, a new evaluation set we release to measure functional correctness for synthesizing p",
+    "categories": [
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2211.09110",
+    "title": "Holistic Evaluation of Language Models",
+    "authors": [
+      "Percy Liang",
+      "Rishi Bommasani",
+      "Tony Lee"
+    ],
+    "year": 2022,
+    "abstract": "Language models (LMs) are becoming the foundation for almost all major language technologies, but their capabilities, limitations, and risks are not well understood. We present Holistic Evaluation of Language Models (HELM) to improve the transparency of language models. First, we taxonomize the vast",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2206.04615",
+    "title": "Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models",
+    "authors": [
+      "Aarohi Srivastava",
+      "Abhinav Rastogi",
+      "Abhishek Rao"
+    ],
+    "year": 2022,
+    "abstract": "Language models demonstrate both quantitative improvement and new qualitative capabilities with increasing scale. Despite their potentially transformative impact, these new capabilities are as yet poorly characterized. In order to inform future research, prepare for disruptive new model capabilities",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CY",
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "2110.14168",
+    "title": "Training Verifiers to Solve Math Word Problems",
+    "authors": [
+      "Karl Cobbe",
+      "Vineet Kosaraju",
+      "Mohammad Bavarian"
+    ],
+    "year": 2021,
+    "abstract": "State-of-the-art language models can match human performance on many tasks, but they still struggle to robustly perform multi-step mathematical reasoning. To diagnose the failures of current models and support research, we introduce GSM8K, a dataset of 8.5K high quality linguistically diverse grade ",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2203.02155",
+    "title": "Training language models to follow instructions with human feedback",
+    "authors": [
+      "Long Ouyang",
+      "Jeff Wu",
+      "Xu Jiang"
+    ],
+    "year": 2022,
+    "abstract": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we sho",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2305.18290",
+    "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+    "authors": [
+      "Rafael Rafailov",
+      "Archit Sharma",
+      "Eric Mitchell"
+    ],
+    "year": 2023,
+    "abstract": "While large-scale unsupervised language models (LMs) learn broad world knowledge and some reasoning skills, achieving precise control of their behavior is difficult due to the completely unsupervised nature of their training. Existing methods for gaining such steerability collect human labels of the",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2403.04132",
+    "title": "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference",
+    "authors": [
+      "Wei-Lin Chiang",
+      "Lianmin Zheng",
+      "Ying Sheng"
+    ],
+    "year": 2024,
+    "abstract": "Large Language Models (LLMs) have unlocked new capabilities and applications; however, evaluating the alignment with human preferences still poses significant challenges. To address this issue, we introduce Chatbot Arena, an open platform for evaluating LLMs based on human preferences. Our methodolo",
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "1904.09679",
+    "title": "Investigating Prior Knowledge for Challenging Chinese Machine Reading Comprehension",
+    "authors": [
+      "Kai Sun",
+      "Dian Yu",
+      "Dong Yu"
+    ],
+    "year": 2019,
+    "abstract": "Machine reading comprehension tasks require a machine reader to answer questions relevant to the given document. In this paper, we present the first free-form multiple-Choice Chinese machine reading Comprehension dataset (C^3), containing 13,369 documents (dialogues or more formally written mixed-ge",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2306.05685",
+    "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+    "authors": [
+      "Lianmin Zheng",
+      "Wei-Lin Chiang",
+      "Ying Sheng"
+    ],
+    "year": 2023,
+    "abstract": "Evaluating large language model (LLM) based chat assistants is challenging due to their broad capabilities and the inadequacy of existing benchmarks in measuring human preferences. To address this, we explore using strong LLMs as judges to evaluate these models on more open-ended questions. We exami",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2307.15043",
+    "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+    "authors": [
+      "Andy Zou",
+      "Zifan Wang",
+      "Nicholas Carlini"
+    ],
+    "year": 2023,
+    "abstract": "Because \"out-of-the-box\" large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures -- so-called \"jailbreaks",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CR",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2309.01446",
+    "title": "Open Sesame! Universal Black Box Jailbreaking of Large Language Models",
+    "authors": [
+      "Raz Lapid",
+      "Ron Langberg",
+      "Moshe Sipper"
+    ],
+    "year": 2023,
+    "abstract": "Large language models (LLMs), designed to provide helpful and safe responses, often rely on alignment techniques to align with user intent and social guidelines. Unfortunately, this alignment can be exploited by malicious actors seeking to manipulate an LLM's outputs for unintended purposes. In this",
+    "categories": [
+      "cs.CL",
+      "cs.CV",
+      "cs.NE"
+    ]
+  },
+  {
+    "id": "2307.09302",
+    "title": "Conformal prediction under ambiguous ground truth",
+    "authors": [
+      "David Stutz",
+      "Abhijit Guha Roy",
+      "Tatiana Matejovicova"
+    ],
+    "year": 2023,
+    "abstract": "Conformal Prediction (CP) allows to perform rigorous uncertainty quantification by constructing a prediction set $C(X)$ satisfying $\\mathbb{P}(Y \\in C(X))\\geq 1-\u03b1$ for a user-chosen $\u03b1\\in [0,1]$ by relying on calibration data $(X_1,Y_1),...,(X_n,Y_n)$ from $\\mathbb{P}=\\mathbb{P}^{X} \\otimes \\mathbb{",
+    "categories": [
+      "cs.LG",
+      "cs.CV",
+      "stat.ME",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "2207.05221",
+    "title": "Language Models (Mostly) Know What They Know",
+    "authors": [
+      "Saurav Kadavath",
+      "Tom Conerly",
+      "Amanda Askell"
+    ],
+    "year": 2022,
+    "abstract": "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus ",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2311.05232",
+    "title": "A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions",
+    "authors": [
+      "Lei Huang",
+      "Weijiang Yu",
+      "Weitao Ma"
+    ],
+    "year": 2023,
+    "abstract": "The emergence of large language models (LLMs) has marked a significant breakthrough in natural language processing (NLP), fueling a paradigm shift in information acquisition. Nevertheless, LLMs are prone to hallucination, generating plausible yet nonfactual content. This phenomenon raises significan",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2309.11206",
+    "title": "Retrieve-Rewrite-Answer: A KG-to-Text Enhanced LLMs Framework for Knowledge Graph Question Answering",
+    "authors": [
+      "Yike Wu",
+      "Nan Hu",
+      "Sheng Bi"
+    ],
+    "year": 2023,
+    "abstract": "Despite their competitive performance on knowledge-intensive tasks, large language models (LLMs) still have limitations in memorizing all world knowledge especially long tail knowledge. In this paper, we study the KG-augmented language model approach for solving the knowledge graph question answerin",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2309.15217",
+    "title": "Ragas: Automated Evaluation of Retrieval Augmented Generation",
+    "authors": [
+      "Shahul Es",
+      "Jithin James",
+      "Luis Espinosa-Anke"
+    ],
+    "year": 2023,
+    "abstract": "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, ",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2311.09476",
+    "title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems",
+    "authors": [
+      "Jon Saad-Falcon",
+      "Omar Khattab",
+      "Christopher Potts"
+    ],
+    "year": 2023,
+    "abstract": "Evaluating retrieval-augmented generation (RAG) systems traditionally relies on hand annotations for input queries, passages to retrieve, and responses to generate. We introduce ARES, an Automated RAG Evaluation System, for evaluating RAG systems along the dimensions of context relevance, answer fai",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IR"
+    ]
+  },
+  {
+    "id": "2212.08073",
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "authors": [
+      "Yuntao Bai",
+      "Saurav Kadavath",
+      "Sandipan Kundu"
+    ],
+    "year": 2022,
+    "abstract": "As AI systems become more capable, we would like to enlist their help to supervise other AIs. We experiment with methods for training a harmless AI assistant through self-improvement, without any human labels identifying harmful outputs. The only human oversight is provided through a list of rules o",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2306.09442",
+    "title": "Explore, Establish, Exploit: Red Teaming Language Models from Scratch",
+    "authors": [
+      "Stephen Casper",
+      "Jason Lin",
+      "Joe Kwon"
+    ],
+    "year": 2023,
+    "abstract": "Deploying large language models (LMs) can pose hazards from harmful outputs such as toxic or false text. Prior work has introduced automated tools that elicit harmful outputs to identify these risks. While this is a valuable step toward securing models, these approaches rely on a pre-existing way to",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2004.10229",
+    "title": "Perturbations in Regularized Lovelock Gravity",
+    "authors": [
+      "Alessandro Casalino",
+      "Lorenzo Sebastiani"
+    ],
+    "year": 2020,
+    "abstract": "In this paper we study the perturbation theory of the recently proposed Regularized Lovelock Gravity, on the curved FLRW space-time. We provide the first order perturbation equations both in the scalar and tensor sector in the presence of an additional minimally coupled scalar field. A general expre",
+    "categories": [
+      "gr-qc"
+    ]
+  },
+  {
+    "id": "1710.04019",
+    "title": "An introduction to Topological Data Analysis: fundamental and practical aspects for data scientists",
+    "authors": [
+      "Fr\u00e9d\u00e9ric Chazal",
+      "Bertrand Michel"
+    ],
+    "year": 2017,
+    "abstract": "Topological Data Analysis is a recent and fast growing field providing a set of new topological and geometric tools to infer relevant features for possibly complex data. This paper is a brief introduction, through a few selected topics, to basic fundamental and practical aspects of \\tda\\ for non exp",
+    "categories": [
+      "math.ST",
+      "cs.LG",
+      "math.AT",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "2012.10714",
+    "title": "A Light Field Front-end for Robust SLAM in Dynamic Environments",
+    "authors": [
+      "Pushyami Kaveti",
+      "Hanumant Singh"
+    ],
+    "year": 2020,
+    "abstract": "There is a general expectation that robots should operate in urban environments often consisting of potentially dynamic entities including people, furniture and automobiles. Dynamic objects pose challenges to visual SLAM algorithms by introducing errors into the front-end. This paper presents a Ligh",
+    "categories": [
+      "cs.RO"
+    ]
+  },
+  {
+    "id": "1808.08271",
+    "title": "An elementary introduction to information geometry",
+    "authors": [
+      "Frank Nielsen"
+    ],
+    "year": 2018,
+    "abstract": "In this survey, we describe the fundamental differential-geometric structures of information manifolds, state the fundamental theorem of information geometry, and illustrate some use cases of these information manifolds in information sciences. The exposition is self-contained by concisely introduci",
+    "categories": [
+      "cs.LG",
+      "cs.IT",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "2311.04850",
+    "title": "Rethinking Benchmark and Contamination for Language Models with Rephrased Samples",
+    "authors": [
+      "Shuo Yang",
+      "Wei-Lin Chiang",
+      "Lianmin Zheng"
+    ],
+    "year": 2023,
+    "abstract": "Large language models are increasingly trained on all the data ever produced by humans. Many have raised concerns about the trustworthiness of public benchmarks due to potential contamination in pre-training or fine-tuning datasets. While most data decontamination efforts apply string matching (e.g.",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2310.16789",
+    "title": "Detecting Pretraining Data from Large Language Models",
+    "authors": [
+      "Weijia Shi",
+      "Anirudh Ajith",
+      "Mengzhou Xia"
+    ],
+    "year": 2023,
+    "abstract": "Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed. Given the incredible scale of this data, up to trillions of tokens, it is all but certain that it includes potentially problematic text such as copyrighted materials, personally identifiable i",
+    "categories": [
+      "cs.CL",
+      "cs.CR",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2302.06476",
+    "title": "Is ChatGPT a General-Purpose Natural Language Processing Task Solver?",
+    "authors": [
+      "Chengwei Qin",
+      "Aston Zhang",
+      "Zhuosheng Zhang"
+    ],
+    "year": 2023,
+    "abstract": "Spurred by advancements in scale, large language models (LLMs) have demonstrated the ability to perform a variety of natural language processing (NLP) tasks zero-shot -- i.e., without adaptation on downstream data. Recently, the debut of ChatGPT has drawn a great deal of attention from the natural l",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  }
+]

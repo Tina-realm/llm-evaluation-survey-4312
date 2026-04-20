@@ -1,0 +1,75 @@
+\section{Related Work}
+\label{sec:related}
+
+We organize related work into three categories: LLM evaluation surveys and benchmarks, mathematical tools we build upon, and prior applications of these tools to machine learning.
+
+\subsection{LLM Evaluation Surveys and Benchmarks}
+
+\para{Comprehensive benchmarks.}
+\mmlu~\citep{hendrycks2021mmlu} established multi-task evaluation across 57 subjects.
+\bigbench~\citep{srivastava2022bigbench} expanded to 204 tasks contributed by 450+ researchers, revealing emergent abilities at scale.
+\helm~\citep{liang2022helm} introduced holistic multi-metric evaluation across 42 scenarios with 7 metrics per model.
+These benchmarks catalog \emph{what} to measure but do not formalize \emph{how} measurements compose or \emph{when} they remain stable.
+
+\para{Domain-specific evaluation.}
+Code generation is evaluated via \humaneval~\citep{chen2021evaluating} with pass@$k$ metrics.
+Mathematical reasoning uses \gsmk~\citep{cobbe2021gsm8k} and MATH~\citep{hendrycks2021math}.
+Safety evaluation spans TruthfulQA~\citep{lin2022truthfulqa}, DecodingTrust~\citep{wang2023decodingtrust}, and red-teaming approaches~\citep{perez2022redteaming, zou2023universal}.
+Calibration is assessed via Expected Calibration Error~\citep{guo2017calibration, naeini2015ece} and self-evaluation~\citep{kadavath2022language}.
+
+\para{Preference-based evaluation.}
+\chatbotarena~\citep{chiang2024chatbot} uses crowdsourced pairwise comparisons with Bradley-Terry models and Elo ratings from 240K+ votes.
+MT-Bench~\citep{zheng2023judging} systematically studies LLM-as-judge paradigms, finding 80\%+ agreement with human evaluators.
+AlpacaEval~\citep{li2023alpacaeval} and Arena-Hard~\citep{li2024arenahard} provide efficient automated alternatives.
+
+\para{Contamination detection.}
+\citet{shi2023detecting} propose MIN-K\% PROB for reference-free membership inference.
+\citet{yang2023rethinking} demonstrate that rephrased samples bypass n-gram decontamination while still inflating benchmarks.
+Recent surveys~\citep{xu2024contamination, deng2024contamination} catalog 50+ detection techniques, none providing formal spectral guarantees.
+
+\para{Existing surveys.}
+Prior survey papers~\citep{chang2024survey, guo2023evaluating} catalog evaluation methods comprehensively but lack mathematical analysis of stability, composability, or formal guarantees.
+Unlike these works, we provide both a systematic taxonomy and novel mathematical frameworks with provable properties.
+
+\subsection{Mathematical Foundations}
+
+\para{Topological data analysis.}
+\PH tracks topological features across scales via filtrations of simplicial complexes~\citep{edelsbrunner2008persistent, carlsson2009topology}.
+The stability theorem of \citet{cohen2007stability} guarantees that the bottleneck distance between persistence diagrams is bounded by the Hausdorff distance between input point clouds.
+\citet{chazal2021introduction} provide a comprehensive introduction with applications to machine learning.
+
+\para{Sheaf theory.}
+Sheaves formalize the relationship between local and global data on topological spaces~\citep{bredon1997sheaf}.
+Cellular sheaves on graphs~\citep{curry2014sheaves, hansen2017sheaf} provide computable cohomological invariants measuring the obstruction to gluing local sections into global ones.
+
+\para{Information geometry.}
+The Fisher information metric defines a Riemannian structure on statistical manifolds~\citep{amari2016information, amari1998natural}.
+\citet{nielsen2020elementary} provides an accessible introduction covering Fisher-Rao geodesics, dual connections, and divergence functions.
+The Fisher-Rao distance is the unique metric invariant under sufficient statistics~\citep{cencov1982statistical}.
+
+\para{Random matrix theory.}
+The \marchpast law~\citep{marchenkopastur1967} characterizes eigenvalue distributions of large random matrices.
+The \tw distribution~\citep{tracy1996orthogonal} governs fluctuations of the largest eigenvalue.
+\citet{bouchaud2009random} surveys applications in physics and finance; \citet{mehta2004random} provides comprehensive mathematical treatment.
+
+\subsection{Mathematical Tools Applied to Neural Networks}
+
+\para{TDA for neural networks.}
+\citet{ramamurthy2019topological} define neural persistence as a complexity measure for DNNs.
+\citet{naitzat2020topology} show that neural networks progressively simplify data topology across layers.
+\citet{rieck2019neural} demonstrate that persistent homology captures generalization without validation data.
+However, these works analyze network \emph{internals} rather than \emph{evaluation methodology}---our contribution.
+
+\para{Sheaves for graph neural networks.}
+\citet{bodnar2022neural} introduce neural sheaf diffusion, generalizing GNNs via the sheaf Laplacian.
+\citet{hansen2020sheaf} use sheaf-theoretic tools for opinion dynamics on networks.
+These demonstrate computational feasibility of sheaf methods but address network architecture, not evaluation composition.
+
+\para{RMT for deep learning.}
+\citet{martin2021implicit} show that weight matrix spectra of well-trained networks exhibit heavy-tailed distributions deviating from \marchpast predictions, proposing this as a training quality indicator.
+\citet{wei2022deep} and \citet{pennington2017resurrecting} use RMT to analyze gradient dynamics.
+No prior work applies RMT to contamination detection in evaluation, which we address.
+
+\para{Positioning our work.}
+Unlike prior applications of TDA/RMT to neural network internals, we apply mathematical tools to the \emph{evaluation methodology itself}---treating performance profiles, multi-metric assessments, and score matrices as mathematical objects amenable to formal analysis.
+This provides guarantees about the evaluation process rather than the model being evaluated.

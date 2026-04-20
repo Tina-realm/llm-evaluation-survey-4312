@@ -1,0 +1,45 @@
+\section{Introduction}
+\label{sec:intro}
+
+Large language models have advanced at a pace that outstrips our ability to evaluate them.
+The \mmlu benchmark, introduced in 2021 with state-of-the-art performance at 43.9\%, now sees models exceeding 90\%~\citep{hendrycks2021mmlu, openai2023gpt4}.
+\gsmk went from challenging to nearly saturated in two years~\citep{cobbe2021gsm8k}.
+\humaneval pass rates climbed from 28.8\% to over 90\%~\citep{chen2021evaluating}.
+This rapid saturation creates a fundamental problem: {\bf how do we rigorously assess systems whose capabilities increasingly exceed the sensitivity of our measurement tools?}
+
+Current evaluation methodology suffers from several structural deficiencies.
+Benchmark scores are point estimates without stability guarantees---small perturbations to test sets can produce large ranking changes~\citep{dehghani2021benchmark}.
+Multi-metric evaluations (\eg \helm with 7 metrics across 42 scenarios) lack formal frameworks for composing local assessments into consistent global judgments~\citep{liang2022helm}.
+Contamination detection relies on surface-level string matching that is easily evaded by paraphrasing~\citep{yang2023rethinking}.
+Human preference evaluations, while more naturalistic, assume transitivity and ignore the geometric structure of preference distributions~\citep{chiang2024chatbot}.
+
+\para{The mathematical gap.}
+Powerful mathematical tools exist that directly address these deficiencies.
+Persistent homology provides stability theorems guaranteeing bounded output change under bounded input perturbation~\citep{cohen2007stability, chazal2021introduction}.
+Sheaf theory formalizes the composition of local data into globally consistent structures~\citep{bredon1997sheaf, curry2014sheaves}.
+Information geometry equips probability distributions with proper metric structure via the Fisher-Rao distance~\citep{amari2016information, nielsen2020elementary}.
+Random matrix theory characterizes the spectral signatures of structured versus random data~\citep{marchenkopastur1967, tracy1996orthogonal}.
+Despite their relevance, none of these tools have been systematically applied to LLM evaluation.
+
+\para{Our contribution.}
+We bridge this gap with a three-part contribution.
+First, we survey LLM evaluation across 11 dimensions with consistent mathematical characterization, covering 151 references with over 40\% from 2023--2025.
+Second, we identify 6 cross-cutting gaps in current evaluation methodology that no existing approach addresses.
+Third, we propose 5 novel mathematically grounded evaluation frameworks and validate each with proof-of-concept implementations on real \mmlu data.
+
+Our frameworks produce meaningful results: topological drift detection achieves Wasserstein distance of 1.77 between model generations with formal lower bounds on structural change; sheaf-theoretic composition identifies models where standard averaging loses up to 83\% more information than faithful aggregation; Fisher-Rao geometry reveals model similarities invisible to accuracy comparison; failure mode TDA discovers phase transitions in error structure at the 0.8 threshold; and spectral analysis achieves Tracy-Widom statistics of 83.1 for contamination detection.
+
+Specifically, we make the following contributions:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We present the first comprehensive survey of LLM evaluation that systematically applies mathematical analysis across 11 evaluation dimensions, identifying formal properties (or lack thereof) in each.
+    \item We propose 5 novel evaluation frameworks grounded in topology, sheaf theory, information geometry, and spectral analysis, each providing formal guarantees absent from existing methods.
+    \item We validate all frameworks through proof-of-concept implementations on \mmlu data, demonstrating feasibility and producing quantitative results that complement standard metrics.
+    \item We identify 6 cross-cutting gaps and provide a roadmap for mathematically rigorous LLM evaluation, connecting the evaluation community with established mathematical tools.
+\end{itemize}
+
+The remainder of this paper is organized as follows.
+\secref{sec:related} reviews existing evaluation surveys and mathematical foundations.
+\secref{sec:method} presents our five mathematical frameworks with formal definitions.
+\secref{sec:results} reports experimental validation on \mmlu data.
+\secref{sec:discussion} discusses implications and limitations.
+\secref{sec:conclusion} concludes with future directions.

@@ -1,0 +1,18 @@
+{
+  "dataset": "HELM Benchmark Results",
+  "source": "https://crfm.stanford.edu/helm/latest/",
+  "status": "not_available_as_hf_dataset",
+  "access_methods": [
+    "Browse results at https://crfm.stanford.edu/helm/latest/",
+    "Use HELM CLI: pip install crfm-helm && helm-run",
+    "Download raw results from https://storage.googleapis.com/crfm-helm-public/",
+    "API endpoint: https://crfm.stanford.edu/helm/latest/api/"
+  ],
+  "tried_hf_datasets": [
+    "stanford-crfm/helm-lite",
+    "stanford-crfm/helm",
+    "crfm/helm-lite",
+    "crfm/helm"
+  ],
+  "note": "HELM results are published as interactive leaderboards, not as a single downloadable dataset. Individual benchmark scenarios can be run via the HELM CLI tool."
+}

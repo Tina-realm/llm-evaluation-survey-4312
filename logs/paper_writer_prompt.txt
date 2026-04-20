@@ -1,0 +1,825 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .claude/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex) are pre-copied to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Report: Mathematically Grounded Evaluation of Large Language Models
+
+## 1. Executive Summary
+
+We present a comprehensive survey paper on LLM evaluation that bridges the empirical AI evaluation community with the mathematical sciences. The paper covers 11 evaluation dimensions with consistent structure, identifies 6 cross-cutting gaps, and proposes 5 novel mathematically grounded evaluation frameworks. The final paper is 30 pages with 151 references, includes formal definitions and theorems, and is accompanied by proof-of-concept implementations demonstrating feasibility. All five proposed frameworks (topological drift detection, sheaf-theoretic composition, information-geometric manifolds, TDA failure analysis, and spectral contamination detection) produce meaningful results on real/simulated MMLU data.
+
+## 2. Research Question &amp; Motivation
+
+**Question:** Can tools from topology, algebraic geometry, information geometry, and spectral analysis provide formal evaluation frameworks for LLMs that address fundamental gaps in existing methods?
+
+**Motivation:** LLM evaluation is a critical bottleneck. Benchmarks saturate (MMLU: 43.9% to 90% in 4 years), human evaluation is expensive, automated metrics correlate poorly with quality, and no existing method provides formal mathematical guarantees (stability, composability, drift detection). Despite the existence of powerful mathematical tools in TDA, sheaf theory, information geometry, and RMT, these have not been systematically applied to LLM evaluation.
+
+**Gap Filled:** No prior work systematically bridges mathematical tools with the LLM evaluation community. Existing surveys (Chang et al. 2024, Guo et al. 2023) catalog methods but lack mathematical analysis. TDA/RMT papers analyze neural networks but not evaluation methodology.
+
+## 3. Methodology
+
+### Approach
+Three-part survey paper with proof-of-concept implementations:
+- **Part I**: Systematic literature survey of 11 evaluation dimensions
+- **Part II**: Cross-cutting gap analysis (6 major gaps)
+- **Part III**: 5 novel mathematical framework proposals
+
+### Tools and Libraries
+- Python 3.12, NumPy 1.26, SciPy 1.17, Matplotlib 3.10, Seaborn 0.13
+- Ripser 0.6.14 (Vietoris-Rips persistent homology)
+- Persim 0.3.8 (Wasserstein and bottleneck distances for persistence diagrams)
+- GUDHI (TDA computations)
+- NetworkX (graph construction for sheaf diagrams)
+- Scikit-learn 1.8 (MDS embedding)
+- LaTeX (pdflatex) for paper compilation
+
+### Data
+- **MMLU Dataset**: 14,042 test questions across 57 subjects (loaded from HuggingFace `cais/mmlu`)
+- **Simulated Model Profiles**: 12 models with realistic capability patterns across 57 subjects, based on published MMLU scores (GPT-4, Claude-3, LLaMA-3, etc.)
+- **Chatbot Arena sample**: MT-Bench judgment data (10 samples)
+
+### Experimental Design
+For each of the 5 frameworks, we:
+1. Defined the mathematical setup formally (definitions, theorems)
+2. Implemented a proof-of-concept in Python
+3. Applied it to MMLU-based capability data
+4. Generated visualizations
+5. Analyzed and interpreted results
+
+## 4. Results
+
+### Paper Output
+- **30-page LaTeX paper** compiled to PDF (`results/survey_paper.pdf`)
+- 151 references cited (&gt;40% from 2023-2025)
+- 11 survey sections with comparison tables
+- 5 novel framework sections with formal definitions
+- Unified notation table
+
+### Framework 1: Topological Drift Detection (Persistent Homology)
+- **H0 features**: 12 connected components in the 12-model point cloud in R^57
+- **H1 features**: 0 (no loops detected, as expected for a small point cloud)
+- **Temporal drift**: Wasserstein distance = 1.77, Bottleneck distance = 0.68 between early (2023) and late (2024) model cohorts
+- **Interpretation**: The stability theorem guarantees this lower-bounds the Hausdorff distance at &gt;= 0.34, confirming genuine structural change between model generations
+
+### Framework 2: Sheaf-Theoretic Compositional Evaluation
+- **Graph structure**: 63 nodes (1 global, 5 categories, 57 subjects), 65 edges
+- **Categories**: STEM (17 subjects), Humanities (11), Social Sciences (11), Professional (10), Other (11)
+- **Key finding**: Models with high consistency ratios (Gemini 1.5 Pro: 1.83, Mixtral: 1.72) have heterogeneous profiles where category averaging loses information. Models with low ratios (LLaMA-3 8B: 0.48) have uniform profiles where aggregation is faithful.
+
+### Framework 3: Information-Geometric Evaluation Manifolds
+- **Maximum Fisher-Rao distance**: 2.82 (between Mistral 7B and GPT-4o)
+- **Mean pairwise distance**: 1.46
+- **MDS embedding**: Clear separation between strong/weak models with interesting intermediate structure (Claude-3 Opus geometrically close to GPT-4 despite different raw accuracies)
+- **Fisher information trace**: Weaker models have higher Fisher information (more peaked distributions, more sensitive to perturbation)
+
+### Framework 4: Failure Mode Landscape (TDA)
+- **Phase transition at threshold 0.8**: H1 features emerge (beta_1 = 2), indicating cyclic failure relationships
+- **Threshold progression**: 0.5 (3.9% failure rate, 1 component), 0.6 (9.8%, 1 component), 0.7 (21.1%, 1 component), 0.8 (54.8%, 2 loops detected)
+- **Subject correlation**: Block structure in failure correlation matrix confirms structured (non-random) failures
+
+### Framework 5: Spectral Contamination Detection (RMT)
+- **Marchenko-Pastur bounds**: [0.29, 2.13] for gamma = 4.75
+- **Clean data**: 4 outlier eigenvalues (expected - reflects real model capability structure)
+- **Contaminated data**: Increased spectral deviation; contaminated subjects appear in top leverage scores
+- **Tracy-Widom statistic**: 83.1 (highly significant, indicating genuine structure beyond random noise)
+- **Eigenvalue spacing**: Between Wigner surmise (correlated) and Poisson (independent), indicating moderate inter-task correlations
+
+### Visualizations Generated (11 figures)
+| Figure | File | Description |
+|--------|------|-------------|
+| Taxonomy | `figures/taxonomy_diagram.png` | 11-dimension evaluation taxonomy |
+| Persistence diagrams | `figures/persistence_diagrams.png` | H0/H1 barcodes and diagrams |
+| Topological drift | `figures/topological_drift.png` | Early vs. late model cohort comparison |
+| Sheaf evaluation | `figures/sheaf_evaluation.png` | Task decomposition graph + consistency |
+| Information geometry | `figures/information_geometry.png` | Fisher-Rao matrix, MDS, Fisher traces |
+| Failure landscape | `figures/failure_mode_landscape.png` | Multi-threshold persistence diagrams |
+| Failure correlation | `figures/failure_correlation.png` | Subject failure correlation heatmap |
+| Spectral analysis | `figures/spectral_analysis.png` | Eigenvalues vs. Marchenko-Pastur |
+| Benchmark saturation | `figures/benchmark_saturation.png` | MMLU/GSM8K/HumanEval timeline |
+| Comparison table | `figures/comparison_table.png` | 11-dimension comparison |
+| Frameworks table | `figures/frameworks_table.png` | 5 novel frameworks comparison |
+
+## 5. Analysis &amp; Discussion
+
+### Support for Hypothesis
+All five mathematical frameworks demonstrate feasibility and produce informative results:
+
+1. **Persistent homology** successfully detects structural differences between model generations with formal stability guarantees - something no existing metric provides.
+
+2. **Sheaf theory** reveals that standard averaging is more lossy for heterogeneous models, formalizing when aggregation loses information via cohomological obstructions.
+
+3. **Fisher-Rao distance** captures distributional differences invisible to raw accuracy comparison (Claude-3 Opus and GPT-4 are geometrically close despite different accuracy levels).
+
+4. **Failure mode TDA** reveals a phase transition at the 0.8 threshold where cyclic failure relationships emerge, suggesting structurally distinct failure modes.
+
+5. **Spectral analysis** successfully distinguishes clean from contaminated performance matrices and can localize contaminated subjects via leverage scores.
+
+### Comparison to Baselines
+- Standard accuracy metrics provide point estimates without stability guarantees
+- Elo ratings assume transitive preferences without geometric structure
+- n-gram contamination detection is evaded by rephrasing; spectral detection operates at a structural level
+- No existing framework provides composability guarantees; sheaf theory does
+
+### Limitations
+- **Simulated data**: Model performance profiles are simulated based on published scores, not measured directly. Real API-based evaluation would strengthen results.
+- **Small point cloud**: 12 models in R^57 limits the topological features detectable (no H1 in the full cloud). Production-scale analysis with 100+ models would be more revealing.
+- **Sheaf computation**: Our sheaf construction uses a simplified linear restriction map; full sheaf cohomology computation requires more sophisticated algebra.
+- **Contamination ground truth**: We injected synthetic contamination rather than using known real contamination cases.
+- **CPU-only**: No GPU available; all computations ran on CPU (adequate for TDA/RMT at this scale).
+
+## 6. Conclusions &amp; Next Steps
+
+**Answer to research question:** Yes, mathematical tools from topology, sheaf theory, information geometry, and spectral analysis can provide meaningful evaluation frameworks for LLMs. Our proof-of-concept implementations demonstrate:
+- Topological stability theorems provide formal perturbation bounds absent from all current metrics
+- Sheaf-theoretic composition formally characterizes when evaluation aggregation is faithful
+- Fisher-Rao geometry gives proper metric structure to model comparison beyond accuracy
+- Spectral analysis can detect contamination signatures invisible to surface-level methods
+
+**Recommended follow-up:**
+1. Apply frameworks to real model outputs via API calls (GPT-4, Claude, Gemini)
+2. Scale topological analysis to 100+ models using approximate persistence algorithms
+3. Develop full sheaf cohomology computation on real HELM evaluation data
+4. Validate spectral contamination detection against known contaminated benchmarks
+5. Create an open-source evaluation toolkit integrating all five frameworks
+
+## 7. References
+
+Key papers referenced in this work (151 total in the paper):
+
+- Hendrycks et al. (2021) - MMLU benchmark
+- Chazal &amp; Michel (2021) - Introduction to TDA
+- Nielsen (2020) - Information geometry
+- Martin &amp; Mahoney (2021) - RMT for neural networks
+- Bodnar et al. (2022) - Neural sheaf diffusion
+- Chiang et al. (2024) - Chatbot Arena
+- Shi et al. (2023) - MIN-K% PROB contamination detection
+- Cohen-Steiner et al. (2007) - Persistence stability theorem
+- Marchenko &amp; Pastur (1967) - Marchenko-Pastur law
+- Amari (2016) - Information geometry foundations
+
+Full bibliography available in `paper/references.bib`.
+
+## Appendix: File Structure
+
+```
+/workspaces/llm-evaluation-survey-4312/
+├── paper/
+│   ├── main.tex              # LaTeX source (30 pages)
+│   ├── main.pdf              # Compiled PDF
+│   └── references.bib        # 151 references
+├── src/
+│   └── framework_implementations.py  # All 5 frameworks
+├── results/
+│   ├── survey_paper.pdf      # Copy of compiled paper
+│   ├── framework_results.json # Numerical results
+│   ├── model_performances.json # Performance data
+│   └── survey_taxonomy.json  # Structured taxonomy
+├── figures/                  # 11 publication-quality figures
+├── datasets/                 # MMLU, Chatbot Arena data
+├── papers/                   # 36 downloaded PDFs
+├── code/                     # 6 cloned repositories
+├── planning.md               # Research plan
+├── REPORT.md                 # This report
+└── README.md                 # Project overview
+```
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Plan: Mathematically Grounded Evaluation of Large Language Models
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+LLM evaluation is a critical bottleneck: benchmarks saturate (MMLU went from 43.9% to &gt;90% in 3 years), human evaluation is expensive and non-reproducible, automated metrics correlate poorly with true quality, and production monitoring lacks formal guarantees. The field needs principled mathematical foundations that provide provable properties—stability under perturbation, composability of local evaluations, and detection of systematic failures.
+
+### Gap in Existing Work
+Based on our literature review of 36+ papers:
+- **Existing surveys** (Chang et al. 2023, HELM) catalog methods but don&#39;t provide mathematical unification
+- **Benchmark papers** (MMLU, BIG-bench, HumanEval) define tasks but lack formal stability analysis
+- **TDA in ML** (Neural Persistence, PH captures generalization) applies topology to training but NOT to evaluation methodology
+- **RMT for DNNs** (Martin &amp; Mahoney 2018) analyzes weight matrices but hasn&#39;t been applied to contamination detection
+- **Sheaf theory in ML** (Sheaf Neural Networks) uses sheaves for GNNs but NOT for evaluation composition
+- **Information geometry** is well-developed theoretically but NOT applied to LLM evaluation drift detection
+
+No existing work systematically bridges mathematical tools (topology, algebraic geometry, information geometry, spectral theory) with the practical evaluation community.
+
+### Our Novel Contribution
+1. **First comprehensive taxonomy** of LLM evaluation across 11 dimensions with consistent mathematical characterization
+2. **Five novel mathematical frameworks** for evaluation, each grounded in established theory:
+   - Topological drift detection via persistent homology
+   - Sheaf-theoretic compositional evaluation
+   - Information-geometric evaluation manifolds
+   - TDA failure mode landscape analysis
+   - Spectral contamination detection via RMT
+3. **Proof-of-concept implementations** demonstrating feasibility on real data (MMLU, Chatbot Arena)
+
+### Experiment Justification
+- **Experiment 1 (Persistent Homology on MMLU)**: Demonstrates that topological features of model capability profiles are stable and informative—needed to validate that TDA adds value beyond standard metrics
+- **Experiment 2 (Sheaf Construction)**: Shows that multi-metric evaluations can be formalized as sheaves with computable cohomology—needed to prove compositional evaluation is tractable
+- **Experiment 3 (Information Geometry)**: Computes Fisher-Rao distances on Bradley-Terry model families—needed to show distributional drift is geometrically detectable
+- **Experiment 4 (Failure Mode TDA)**: Applies persistent homology to error patterns—needed to show structural failure clustering exists
+- **Experiment 5 (Spectral Analysis)**: Analyzes eigenvalue distributions of performance matrices—needed to validate RMT predictions about contamination signatures
+
+## Research Question
+Can tools from topology, algebraic geometry, information geometry, and spectral analysis provide formal evaluation frameworks for LLMs that address fundamental gaps (stability, composability, drift detection, contamination) in existing methods?
+
+## Hypothesis Decomposition
+1. Persistent homology of model capability profiles reveals stable topological features that track model evolution
+2. Sheaf-theoretic formalization of multi-metric evaluation detects inconsistencies via cohomological obstructions
+3. Fisher information metric on LLM output distributions provides principled drift detection
+4. TDA of failure patterns reveals structural clustering invisible to pointwise metrics
+5. Eigenvalue distributions of performance matrices deviate from RMT predictions under contamination
+
+## Proposed Methodology
+
+### Approach
+Three-part survey paper with proof-of-concept implementations:
+- **Part I**: Systematic survey of 11 evaluation dimensions (literature synthesis)
+- **Part II**: Cross-cutting gap analysis identifying 6 major limitations
+- **Part III**: 5 novel mathematical framework proposals with formal definitions and implementations
+
+### Experimental Steps
+1. Load MMLU performance data across subjects → construct capability vectors
+2. Compute persistent homology of capability point clouds using ripser/gudhi
+3. Construct sheaf over HELM-style evaluation graph → compute cohomology
+4. Fit Bradley-Terry models to Chatbot Arena data → compute Fisher metric
+5. Analyze eigenvalue distributions of performance matrices → test against Marchenko-Pastur
+6. Generate all figures for paper
+
+### Baselines
+- Standard accuracy metrics (per-subject MMLU)
+- Elo/Bradley-Terry rankings (Chatbot Arena)
+- ECE for calibration
+- n-gram overlap for contamination
+
+### Evaluation Metrics
+- Coverage: 11 dimensions, 150+ references
+- Mathematical rigor: formal definitions, theorem statements
+- Implementation feasibility: working proof-of-concept code
+- Visual clarity: publication-quality figures
+
+## Timeline
+- Planning: 20 min (this document)
+- Environment setup: 10 min
+- Implementation (5 frameworks + figures): 90 min
+- LaTeX paper writing: 90 min
+- Documentation: 30 min
+- Total: ~4 hours
+
+## Potential Challenges
+- TDA libraries may be slow on CPU → use small point clouds, precompute
+- Sheaf cohomology requires custom implementation → keep to toy examples
+- LaTeX compilation → ensure texlive is available
+- 150+ references → use structured BibTeX generation
+
+## Success Criteria
+- Paper compiles to PDF with correct formatting
+- All 5 proof-of-concept implementations produce meaningful output
+- Figures are publication quality
+- Survey covers all 11 dimensions consistently
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: Mathematically Grounded Evaluation of Large Language Models
+
+## Research Area Overview
+
+This literature review surveys the intersection of LLM evaluation methodology and mathematical frameworks (topology, information geometry, spectral analysis) that could provide formal guarantees for evaluation. Current LLM evaluation relies on benchmarks with ad-hoc metrics that lack composability, formal stability guarantees, and robustness to contamination. We identify four mathematical pillars that could address these gaps: persistent homology (for multi-scale structural analysis), sheaf theory (for composing local evaluations globally), information geometry/Fisher metric (for detecting distributional drift), and random matrix theory (for contamination detection via spectral signatures).
+
+---
+
+## Key Papers
+
+### A. LLM Evaluation Benchmarks
+
+#### 1. MMLU - Measuring Massive Multitask Language Understanding
+- **Authors**: Hendrycks, Burns, Basart, Zou, Mazeika, Song, Steinhardt (2020)
+- **Source**: ICLR 2021 (arXiv:2009.03300)
+- **Key Contribution**: 57-task benchmark covering STEM, humanities, social sciences across elementary to professional difficulty. 15,908 multiple-choice questions.
+- **Methodology**: Zero-shot and few-shot evaluation. Questions from practice exams (GRE, USMLE, AP exams).
+- **Key Results**: GPT-3 175B achieved 43.9% (expert-level ~89.8%). Performance is lopsided - strong on some subjects, near-random on others. Models poorly calibrated (confidence 24% off from accuracy).
+- **Limitations**: Static benchmark susceptible to contamination. Multiple-choice format doesn&#39;t capture open-ended abilities.
+- **Relevance**: Primary benchmark dataset for our experiments. The lopsided performance pattern is ideal for topological analysis of capability structure.
+
+#### 2. HELM - Holistic Evaluation of Language Models
+- **Authors**: Liang, Bommasani, Lee et al. (2022)
+- **Source**: arXiv:2211.09110
+- **Key Contribution**: Comprehensive evaluation framework covering 42 scenarios, 7 metrics (accuracy, calibration, robustness, fairness, bias, toxicity, efficiency) across 30+ models.
+- **Methodology**: Standardized evaluation pipeline. Multi-metric approach measuring beyond accuracy.
+- **Key Results**: No single model dominates across all scenarios/metrics. Strong models in accuracy may be weak in fairness or robustness.
+- **Relevance**: The multi-metric structure of HELM is a natural fit for sheaf-theoretic composition - local evaluations on individual scenarios can be composed into global assessments with formal consistency guarantees.
+
+#### 3. BIG-bench - Beyond the Imitation Game
+- **Authors**: Srivastava, Rastogi, Rao et al. (2022)
+- **Source**: arXiv:2206.04615
+- **Key Contribution**: 204 tasks contributed by 450+ researchers. Tasks designed to probe capabilities beyond current benchmarks.
+- **Methodology**: Collaborative benchmark with diverse task types.
+- **Key Results**: Models show emergent abilities at scale on some tasks. Performance often follows sharp transitions rather than smooth scaling.
+- **Relevance**: Emergent abilities create discontinuities in the capability landscape - persistent homology could detect these topological phase transitions.
+
+#### 4. Codex / HumanEval
+- **Authors**: Chen, Tworek, Jun et al. (2021)
+- **Source**: arXiv:2107.03374
+- **Key Contribution**: HumanEval benchmark (164 programming problems) measuring functional correctness via pass@k metric.
+- **Relevance**: Code evaluation provides a well-defined ground truth, making it suitable for formal analysis.
+
+#### 5. GSM8K
+- **Authors**: Cobbe, Kosaraju, Bavarian et al. (2021)
+- **Source**: arXiv:2110.14168
+- **Key Contribution**: 8.5K grade school math word problems. Introduced verifier-based approach (training outcome-based reward models).
+- **Relevance**: Math reasoning benchmark with clear correctness criteria.
+
+### B. Human Preference and Alignment Evaluation
+
+#### 6. Chatbot Arena
+- **Authors**: Chiang, Zheng, Sheng, Angelopoulos et al. (2024)
+- **Source**: arXiv:2403.04132
+- **Key Contribution**: Open crowdsourced LLM evaluation platform with 240K+ pairwise votes. Uses Bradley-Terry model and Elo ratings for ranking.
+- **Methodology**: Anonymous pairwise comparisons with real users. Adaptive sampling for efficient ranking convergence. E-values from Vovk &amp; Wang (2021) for statistical validity.
+- **Key Results**: Crowdsourced votes agree well with expert evaluations. Live platform avoids contamination issues of static benchmarks.
+- **Relevance**: The Bradley-Terry model for pairwise comparisons has deep connections to information geometry (it defines an exponential family manifold). The Fisher information metric on this manifold could detect when rankings are unstable or when new models create structural shifts.
+
+#### 7. LLM-as-a-Judge / MT-Bench
+- **Authors**: Zheng, Chiang, Sheng et al. (2023)
+- **Source**: NeurIPS 2023 (arXiv:2306.05685)
+- **Key Contribution**: Systematic study of using GPT-4 as evaluator. MT-Bench: 80 multi-turn questions across 8 categories.
+- **Methodology**: Pairwise comparison and single-answer grading. Studied position bias, verbosity bias, self-enhancement bias.
+- **Key Results**: GPT-4 achieves 80%+ agreement with humans (same as human-human agreement).
+- **Relevance**: LLM-as-judge introduces systematic biases that could be formalized via information geometry. The discrepancy between judge distributions and true preference distributions can be measured via Fisher-Rao distance.
+
+#### 8. InstructGPT
+- **Authors**: Ouyang, Wu, Jiang et al. (2022)
+- **Source**: arXiv:2203.02155
+- **Key Contribution**: RLHF training paradigm. Showed instruction-tuned models preferred over much larger base models.
+- **Relevance**: RLHF changes the output distribution geometry; information-geometric tools could track how alignment modifies the manifold structure.
+
+#### 9. DPO - Direct Preference Optimization
+- **Authors**: Rafailov, Sharma, Mitchell et al. (2023)
+- **Source**: arXiv:2305.18290
+- **Key Contribution**: Reformulates RLHF as direct optimization on preferences, eliminating the reward model.
+- **Relevance**: DPO has an implicit connection to the Bradley-Terry model and exponential families, making it amenable to information-geometric analysis.
+
+### C. Calibration and Uncertainty
+
+#### 10. Language Models (Mostly) Know What They Know
+- **Authors**: Kadavath, Conerly, Askell et al. (Anthropic, 2022)
+- **Source**: arXiv:2207.05221
+- **Key Contribution**: Studied self-evaluation and calibration in LLMs. Introduced P(True) and P(IK) (&#34;I Know&#34;) metrics.
+- **Methodology**: Models evaluate their own answers. Calibration improves with scale. &#34;Brainstorming&#34; multiple answers before evaluation helps.
+- **Key Results**: Larger models are well-calibrated on multiple-choice. Self-evaluation improves faster than generation quality with scale.
+- **Relevance**: Calibration is fundamentally a question of the geometry of probability distributions. The Fisher metric provides the natural distance on the space of calibrated predictions.
+
+#### 11. Conformal Prediction under Ambiguous Ground Truth
+- **Authors**: Stutz, Roy, Matejovicova et al. (2023)
+- **Source**: arXiv:2307.09302
+- **Key Contribution**: Extends conformal prediction to settings with ambiguous labels. Provides formal coverage guarantees.
+- **Relevance**: Conformal prediction provides distribution-free coverage guarantees - a formal statistical framework that complements our mathematical approaches.
+
+### D. Contamination Detection
+
+#### 12. Detecting Pretraining Data from Large Language Models (MIN-K% PROB)
+- **Authors**: Shi, Ajith, Xia, Huang et al. (2023)
+- **Source**: ICLR 2024 (arXiv:2310.16789)
+- **Key Contribution**: Reference-free membership inference attack. MIN-K% PROB selects tokens with lowest probabilities and averages their log-likelihood.
+- **Methodology**: Hypothesis: unseen text has more outlier low-probability tokens than seen text. WIKIMIA benchmark using Wikipedia temporal splits.
+- **Key Results**: 7.4% AUC improvement over baselines. Applied to copyrighted book detection, contamination detection, privacy auditing.
+- **Relevance**: The statistical basis of MIN-K% PROB could be strengthened with information-geometric tools. Random matrix theory could provide spectral signatures of contamination in weight matrices.
+
+#### 13. Rethinking Benchmark Contamination with Rephrased Samples
+- **Authors**: Yang, Chiang, Zheng et al. (2023)
+- **Source**: arXiv:2311.04850
+- **Key Contribution**: Showed n-gram decontamination is insufficient. Rephrased test samples bypass detection but still inflate benchmarks.
+- **Methodology**: LLM-based rephrasing. A 13B model trained on rephrased MMLU achieves 85.9% (vs GPT-4&#39;s 86.4%).
+- **Key Results**: 8-18% of HumanEval contaminated in RedPajama/StarCoder. Synthetic data from GPT-3.5/4 also carries contamination risk.
+- **Relevance**: Topological approaches could detect contamination at a structural level, beyond surface-level string matching. Persistent homology of embedding spaces could reveal anomalous clustering of contaminated vs. clean data.
+
+### E. Safety and Adversarial Evaluation
+
+#### 14. Universal Adversarial Attacks on Aligned LLMs
+- **Authors**: Zou, Wang, Carlini et al. (2023)
+- **Source**: arXiv:2307.15043
+- **Key Contribution**: GCG attack generating universal adversarial suffixes that transfer across models.
+- **Relevance**: Adversarial robustness evaluation requires understanding the topology of the decision boundary.
+
+#### 15. Constitutional AI
+- **Authors**: Bai, Kadavath, Kundu et al. (2022)
+- **Source**: arXiv:2212.08073
+- **Key Contribution**: Self-improvement for harmlessness without human labels. AI provides feedback based on a constitution.
+- **Relevance**: The constitutional framework creates implicit constraint manifolds; sheaf-theoretic approaches could formalize consistency of safety properties across contexts.
+
+### F. Hallucination and RAG Evaluation
+
+#### 16. Survey on Hallucination in LLMs
+- **Authors**: Huang, Yu, Ma et al. (2023)
+- **Source**: arXiv:2311.05232
+- **Key Contribution**: Taxonomy of hallucination types. Discusses detection and mitigation strategies.
+- **Relevance**: Hallucination detection could benefit from topological analysis of the embedding space.
+
+#### 17. RAGAS and ARES (RAG Evaluation)
+- **Sources**: arXiv:2309.15217, arXiv:2311.09476
+- **Key Contribution**: Automated evaluation frameworks for retrieval-augmented generation.
+- **Relevance**: RAG evaluation requires composing retrieval quality and generation quality - a natural sheaf-theoretic composition problem.
+
+### G. Mathematical Foundations
+
+#### 18. Introduction to Topological Data Analysis
+- **Authors**: Chazal, Michel (2017/2021)
+- **Source**: arXiv:1710.04019
+- **Key Contribution**: Comprehensive TDA introduction covering simplicial complexes, persistent homology, statistical aspects, and machine learning applications.
+- **Core Concepts**:
+  - **Persistent homology**: Tracks topological features (components, loops, cavities) across scales via filtrations. Produces persistence diagrams/barcodes.
+  - **Stability theorem**: Small perturbations in data produce small changes in persistence diagrams (bottleneck distance). This is the key formal guarantee.
+  - **Distance-to-measure (DTM)**: Robust alternative to Hausdorff distance, stable under Wasserstein metric perturbations.
+  - **Vectorization**: Persistence landscapes, persistence images, Betti curves for integration with ML pipelines.
+- **Tools**: GUDHI (C++/Python), Dionysus, Giotto-TDA.
+- **Relevance**: Core methodology. Persistent homology can be applied to LLM embedding spaces to detect structural features (clusters, loops, voids) at multiple scales. The stability theorem guarantees that these features are robust to noise.
+
+#### 19. Elementary Introduction to Information Geometry
+- **Authors**: Frank Nielsen (2018/2020)
+- **Source**: arXiv:1808.08271
+- **Key Contribution**: Self-contained introduction to information manifolds, Fisher metric, conjugate connections, dually flat manifolds.
+- **Core Concepts**:
+  - **Fisher information metric**: The unique invariant metric on statistical manifolds. Measures sensitivity of distributions to parameter changes.
+  - **Conjugate connection manifolds (CCM)**: (M, g, nabla, nabla*) - dual connections preserving the metric under dual parallel transport.
+  - **Statistical manifolds**: (M, g, C) with Amari-Chentsov cubic tensor. Supports alpha-connections family.
+  - **Dually flat manifolds**: From Bregman divergences. Exhibit Pythagorean theorems for projections.
+  - **f-divergences**: Unique separable divergences satisfying information monotonicity.
+  - **Fisher-Rao distance**: Geodesic distance on statistical manifold.
+- **Relevance**: Central to our framework. The Fisher metric on the manifold of LLM output distributions provides a principled way to measure distributional drift (training vs. evaluation, clean vs. contaminated), compare model calibration, and detect when evaluation metrics become unreliable.
+
+---
+
+## Common Methodologies
+- **Multiple-choice accuracy**: MMLU, BIG-bench, HELM (simple but limited)
+- **Pass@k**: HumanEval code evaluation (functional correctness)
+- **Pairwise comparison + Bradley-Terry**: Chatbot Arena, MT-Bench
+- **LLM-as-Judge**: MT-Bench, AlpacaEval (scalable but biased)
+- **Membership inference**: MIN-K% PROB (contamination detection)
+- **Calibration metrics**: ECE, Brier score, P(True)/P(IK)
+
+## Standard Baselines
+- GPT-4, Claude, LLaMA family (proprietary and open)
+- Random chance (25% for 4-choice), human expert performance
+- n-gram overlap for decontamination
+
+## Evaluation Metrics in the Literature
+- Accuracy, F1, BLEU/ROUGE (traditional NLP)
+- Elo rating, win rate (pairwise comparison)
+- AUC for contamination detection
+- ECE (Expected Calibration Error) for calibration
+- Persistence diagram distances (bottleneck, Wasserstein) for TDA
+
+## Datasets in the Literature
+- **MMLU**: 15,908 questions, 57 subjects (we downloaded)
+- **Chatbot Arena**: 240K+ pairwise votes (we downloaded)
+- **HELM**: 42 scenarios, standardized evaluation results (we documented)
+- **GSM8K**: 8.5K math problems
+- **HumanEval**: 164 coding problems
+- **BIG-bench**: 204 tasks
+- **WIKIMIA**: Wikipedia temporal splits for contamination detection
+
+---
+
+## Gaps and Opportunities
+
+### Gap 1: No Formal Stability Guarantees
+Current metrics (accuracy, Elo) lack formal guarantees about how they change under perturbations. Persistent homology&#39;s stability theorem (bounded change in persistence diagrams under bounded input perturbation) directly addresses this.
+
+### Gap 2: Non-Composable Evaluations
+HELM evaluates 7 metrics across 42 scenarios independently. There is no formal framework for composing these into a consistent global assessment. Sheaf theory provides exactly this: local sections (per-scenario evaluations) that must satisfy gluing conditions for global consistency.
+
+### Gap 3: Contamination Detection at Structural Level
+Current methods (n-gram, embedding similarity, MIN-K% PROB) operate at the surface level. Random matrix theory applied to weight matrices or embedding covariance matrices could detect contamination via spectral anomalies (deviation from Marchenko-Pastur distribution).
+
+### Gap 4: No Geometric Framework for Distributional Drift
+When models are updated or evaluated on new data, there&#39;s no principled way to measure how the output distribution has changed. The Fisher-Rao distance on the statistical manifold of output distributions provides this, with information-theoretic interpretations.
+
+---
+
+### Additional Critical Papers (discovered through search)
+
+#### 20. Neural Persistence: A Complexity Measure via Algebraic Topology
+- **Source**: ICLR 2019 (arXiv:1812.09764)
+- **Key Contribution**: Defines neural persistence as a structural complexity measure for DNNs using persistent homology of weighted graphs derived from network weights.
+- **Relevance**: Foundational work directly connecting persistent homology to neural network evaluation.
+
+#### 21. Sheaf Neural Networks / Neural Sheaf Diffusion
+- **Sources**: arXiv:2012.06333, arXiv:2202.04579
+- **Key Contribution**: Generalizes GNNs via sheaf Laplacian. Shows sheaf-theoretic framework explains heterophily and oversmoothing.
+- **Relevance**: Provides precedent for applying sheaf theory to neural network analysis.
+
+#### 22. Implicit Self-Regularization via Random Matrix Theory
+- **Source**: arXiv:1810.01075
+- **Key Contribution**: Seminal work showing weight matrices of pre-trained DNNs exhibit heavy-tailed spectral distributions deviating from Marchenko-Pastur. Proposes this as indicator of training quality.
+- **Relevance**: Core methodology for our spectral analysis pillar. Deviation from RMT predictions indicates learned structure vs. noise.
+
+#### 23. Small Singular Values in Transformers (RMT Analysis)
+- **Source**: arXiv:2410.17770
+- **Key Contribution**: Analyzes singular-value spectra of weight matrices in pretrained transformers using RMT.
+- **Relevance**: Directly applicable to LLM evaluation via spectral signatures.
+
+#### 24. Contamination Detection Surveys
+- **Sources**: arXiv:2404.00699, arXiv:2406.04244
+- **Key Contribution**: Comprehensive reviews of 50+ detection techniques for benchmark contamination.
+- **Relevance**: Establishes the state-of-the-art baseline our mathematical approaches aim to improve upon.
+
+#### 25. Persistent Homology Captures Generalization
+- **Source**: arXiv:2106.00012
+- **Key Contribution**: Shows persistence diagram distances between consecutive training states correlate with validation accuracy - without needing a validation set.
+- **Relevance**: Demonstrates TDA can replace traditional evaluation metrics, supporting our framework&#39;s viability.
+
+---
+
+## Recommendations for Our Experiment
+
+### Recommended Datasets
+1. **MMLU** (primary): Well-structured, 57 subjects, rich performance variation across models - ideal for topological analysis
+2. **Chatbot Arena logs**: Pairwise comparisons with Bradley-Terry structure - natural for information-geometric analysis
+3. **HELM results**: Multi-metric evaluations - ideal for sheaf-theoretic composition experiments
+
+### Recommended Baselines
+1. Standard accuracy metrics (MMLU accuracy per subject)
+2. Elo ratings (Chatbot Arena)
+3. MIN-K% PROB for contamination detection
+4. ECE for calibration assessment
+
+### Recommended Metrics
+1. Persistence diagram distances (bottleneck, Wasserstein-p) for topological analysis
+2. Fisher-Rao distance for distributional comparison
+3. Spectral statistics (Tracy-Widom, Marchenko-Pastur) for contamination
+4. Sheaf cohomology dimensions for evaluation consistency
+
+### Methodological Considerations
+- Start with MMLU performance vectors across subjects as point clouds for TDA
+- Use Chatbot Arena pairwise data to construct Bradley-Terry manifold
+- Apply persistent homology to model embedding spaces at multiple scales
+- Validate contamination detection using known contaminated/clean splits from WIKIMIA
+- Compare topological features before/after known model updates to measure structural drift
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. AUTHOR
+   - Use this exact author line in the \author{} block: Lei Yang and NeuriCo
+
+3. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+4. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+5. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+6. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+7. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+8. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+9. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+10. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   \author{Lei Yang and NeuriCo}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Command templates are pre-copied to paper_draft/commands/:
+   - math.tex: Math notation macros
+   - general.tex: Formatting macros
+   - macros.tex: Project-specific term definitions (customize this for your paper)
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .claude/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

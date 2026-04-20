@@ -1,0 +1,384 @@
+{
+  "framework_1_topological_drift": {
+    "n_models": 12,
+    "n_subjects": 57,
+    "h0_features": 12,
+    "h1_features": 0,
+    "drift_metrics": {
+      "H0_wasserstein": 1.7724411487579346,
+      "H0_bottleneck": 0.684783935546875
+    },
+    "early_models": [
+      "GPT-3.5 Turbo",
+      "LLaMA-3 8B",
+      "Mistral 7B",
+      "PaLM-2"
+    ],
+    "late_models": [
+      "GPT-4o (2024)",
+      "Claude-3.5 Sonnet",
+      "Qwen-2 72B",
+      "Gemini 1.5 Pro"
+    ]
+  },
+  "framework_2_sheaf_evaluation": {
+    "n_categories": 5,
+    "category_sizes": {
+      "STEM": 17,
+      "Humanities": 11,
+      "Social Sciences": 11,
+      "Professional": 10,
+      "Other": 11
+    },
+    "graph_nodes": 63,
+    "graph_edges": 65,
+    "sheaf_sections": {
+      "GPT-4 (2023)": {
+        "global": 0.8109851954676279,
+        "categories": {
+          "STEM": 0.8102850350875109,
+          "Humanities": 0.8159063299667276,
+          "Social Sciences": 0.7973115850815377,
+          "Professional": 0.8249948973782733,
+          "Other": 0.8168212463150076
+        },
+        "obstruction": 0.04436963515108128,
+        "between_category_variance": 8.408065466925902e-05,
+        "within_category_variance": 0.0019931746405369467,
+        "consistency_ratio": 0.04218428668557595
+      },
+      "GPT-4o (2024)": {
+        "global": 0.8599235052897112,
+        "categories": {
+          "STEM": 0.8743137226595794,
+          "Humanities": 0.8508496024678809,
+          "Social Sciences": 0.8350247570134631,
+          "Professional": 0.8722297431113628,
+          "Other": 0.8607493737176353
+        },
+        "obstruction": 0.045313192631609156,
+        "between_category_variance": 0.00021063318743260164,
+        "within_category_variance": 0.0018668097897513586,
+        "consistency_ratio": 0.11283055044274272
+      },
+      "Claude-3 Opus": {
+        "global": 0.837053723919708,
+        "categories": {
+          "STEM": 0.8173054034122645,
+          "Humanities": 0.894101838626547,
+          "Social Sciences": 0.8452413317370723,
+          "Professional": 0.8464642655924676,
+          "Other": 0.8036100510329185
+        },
+        "obstruction": 0.04595188922581983,
+        "between_category_variance": 0.0009653001759676579,
+        "within_category_variance": 0.002281320002608168,
+        "consistency_ratio": 0.42313227979890145
+      },
+      "Claude-3.5 Sonnet": {
+        "global": 0.8749309475823669,
+        "categories": {
+          "STEM": 0.8771379839309269,
+          "Humanities": 0.8764189769935599,
+          "Social Sciences": 0.8521436337183825,
+          "Professional": 0.8770141463313028,
+          "Other": 0.8774831599689654
+        },
+        "obstruction": 0.04345485360410295,
+        "between_category_variance": 9.908007843483058e-05,
+        "within_category_variance": 0.0021732077873521374,
+        "consistency_ratio": 0.04559162471821825
+      },
+      "Gemini 1.5 Pro": {
+        "global": 0.8170796837726441,
+        "categories": {
+          "STEM": 0.8581458246678124,
+          "Humanities": 0.7878641223268438,
+          "Social Sciences": 0.8301219488113388,
+          "Professional": 0.7969036364147188,
+          "Other": 0.7931922281353745
+        },
+        "obstruction": 0.04398131053453358,
+        "between_category_variance": 0.0007228516460494119,
+        "within_category_variance": 0.0030306184043959903,
+        "consistency_ratio": 0.23851621212003324
+      },
+      "LLaMA-3 70B": {
+        "global": 0.7851866841386818,
+        "categories": {
+          "STEM": 0.7866583656413406,
+          "Humanities": 0.7968351597502504,
+          "Social Sciences": 0.796345808311944,
+          "Professional": 0.7829421519616887,
+          "Other": 0.7654284845258507
+        },
+        "obstruction": 0.041959240668128284,
+        "between_category_variance": 0.00013135334478876727,
+        "within_category_variance": 0.0012540401144765204,
+        "consistency_ratio": 0.10474412484738273
+      },
+      "LLaMA-3 8B": {
+        "global": 0.6243734275350805,
+        "categories": {
+          "STEM": 0.623806191318302,
+          "Humanities": 0.6755177854758423,
+          "Social Sciences": 0.6105605701461237,
+          "Professional": 0.5919289913902542,
+          "Other": 0.6033180331070503
+        },
+        "obstruction": 0.030141580225145015,
+        "between_category_variance": 0.0008493634742323039,
+        "within_category_variance": 0.011776024685915475,
+        "consistency_ratio": 0.07212650191159342
+      },
+      "Mixtral 8x22B": {
+        "global": 0.7648717482988505,
+        "categories": {
+          "STEM": 0.7984841615341467,
+          "Humanities": 0.7161638493457768,
+          "Social Sciences": 0.778874820368926,
+          "Professional": 0.7473082379207757,
+          "Other": 0.7593920868677707
+        },
+        "obstruction": 0.039444943765982066,
+        "between_category_variance": 0.0007840676120907674,
+        "within_category_variance": 0.002863733753660869,
+        "consistency_ratio": 0.2737920673349063
+      },
+      "Qwen-2 72B": {
+        "global": 0.7968700831590784,
+        "categories": {
+          "STEM": 0.8450296860342453,
+          "Humanities": 0.7577665312469548,
+          "Social Sciences": 0.779874787577181,
+          "Professional": 0.7937932005312739,
+          "Other": 0.7813350263684335
+        },
+        "obstruction": 0.041940030262205275,
+        "between_category_variance": 0.0008494174629182574,
+        "within_category_variance": 0.0019056334341543788,
+        "consistency_ratio": 0.445740194898063
+      },
+      "GPT-3.5 Turbo": {
+        "global": 0.6941504337489431,
+        "categories": {
+          "STEM": 0.6445899790141636,
+          "Humanities": 0.666710663406086,
+          "Social Sciences": 0.7285520434506885,
+          "Professional": 0.7320591782916508,
+          "Other": 0.7069154070900765
+        },
+        "obstruction": 0.032210630804963,
+        "between_category_variance": 0.0011959252842318854,
+        "within_category_variance": 0.011533179943282549,
+        "consistency_ratio": 0.10369432192541267
+      },
+      "PaLM-2": {
+        "global": 0.7554578314122457,
+        "categories": {
+          "STEM": 0.7461450816606426,
+          "Humanities": 0.7476836109334069,
+          "Social Sciences": 0.7873270108644822,
+          "Professional": 0.7515907665821728,
+          "Other": 0.7566222651083343
+        },
+        "obstruction": 0.041179638939001895,
+        "between_category_variance": 0.00022998745316502104,
+        "within_category_variance": 0.002198128103124062,
+        "consistency_ratio": 0.10462877135107691
+      },
+      "Mistral 7B": {
+        "global": 0.5902326630831459,
+        "categories": {
+          "STEM": 0.5883276437503511,
+          "Humanities": 0.6357987246503503,
+          "Social Sciences": 0.604443388550324,
+          "Professional": 0.5446229907140283,
+          "Other": 0.5604842222151573
+        },
+        "obstruction": 0.028289960433878547,
+        "between_category_variance": 0.0010371794550730075,
+        "within_category_variance": 0.011845628080108047,
+        "consistency_ratio": 0.08755799517789246
+      }
+    }
+  },
+  "framework_3_information_geometry": {
+    "max_fisher_rao": 2.8160228161025382,
+    "mean_fisher_rao": 1.4639535592506987,
+    "fisher_traces": {
+      "GPT-4 (2023)": 700000080.9158661,
+      "GPT-4o (2024)": 600000093.3857131,
+      "Claude-3 Opus": 600000089.7270658,
+      "Claude-3.5 Sonnet": 700000086.3815125,
+      "Gemini 1.5 Pro": 500000146.6001014,
+      "LLaMA-3 70B": 600000178.2594577,
+      "LLaMA-3 8B": 400000079.9911097,
+      "Mixtral 8x22B": 600000089.8818169,
+      "Qwen-2 72B": 600000098.1623328,
+      "GPT-3.5 Turbo": 200000149.38503513,
+      "PaLM-2": 600000128.5862485,
+      "Mistral 7B": 200000193.88039058
+    }
+  },
+  "framework_4_failure_modes": {
+    "threshold_0.5": {
+      "betti_0": 1,
+      "betti_1": 0,
+      "total_persistence_h0": 0.473684199154377,
+      "total_persistence_h1": 0.0,
+      "failure_rate_mean": 0.039473684210526314,
+      "failure_rate_std": 0.07817195546956052
+    },
+    "threshold_0.6": {
+      "betti_0": 1,
+      "betti_1": 0,
+      "total_persistence_h0": 1.0877192914485931,
+      "total_persistence_h1": 0.0,
+      "failure_rate_mean": 0.097953216374269,
+      "failure_rate_std": 0.18153986263722674
+    },
+    "threshold_0.7": {
+      "betti_0": 1,
+      "betti_1": 0,
+      "total_persistence_h0": 1.666666641831398,
+      "total_persistence_h1": 0.0,
+      "failure_rate_mean": 0.21052631578947367,
+      "failure_rate_std": 0.2997040364928366
+    },
+    "threshold_0.8": {
+      "betti_0": 1,
+      "betti_1": 2,
+      "total_persistence_h0": 3.403508797287941,
+      "total_persistence_h1": 0.08771932125091553,
+      "failure_rate_mean": 0.5482456140350878,
+      "failure_rate_std": 0.2926132246337005
+    }
+  },
+  "framework_5_spectral_analysis": {
+    "n_models": 12,
+    "n_subjects": 57,
+    "aspect_ratio_gamma": 4.75,
+    "mp_lambda_plus": 2.128189251271721,
+    "mp_lambda_minus": 0.29286338030722653,
+    "top_5_eigenvalues_clean": [
+      35.87067058153848,
+      6.550658444474843,
+      5.23088066576538,
+      2.4907503074285207,
+      1.7706521139965379
+    ],
+    "top_5_eigenvalues_contaminated": [
+      35.59221862781277,
+      6.7803756118688945,
+      5.250341079445289,
+      2.5416345662807136,
+      1.6861227119229305
+    ],
+    "n_outliers_clean": 4,
+    "n_outliers_contaminated": 4,
+    "tracy_widom_statistic": 83.10380997621196,
+    "contaminated_subjects_injected": [
+      18,
+      29,
+      49,
+      45,
+      6,
+      9,
+      32,
+      39,
+      44,
+      21
+    ],
+    "top_leverage_subjects": [
+      "professional_accounting",
+      "professional_law",
+      "college_computer_science",
+      "college_chemistry",
+      "high_school_us_history",
+      "astronomy",
+      "high_school_statistics",
+      "high_school_physics",
+      "miscellaneous",
+      "computer_security"
+    ]
+  },
+  "metadata": {
+    "n_subjects": 57,
+    "n_models": 12,
+    "subjects": [
+      "abstract_algebra",
+      "anatomy",
+      "astronomy",
+      "business_ethics",
+      "clinical_knowledge",
+      "college_biology",
+      "college_chemistry",
+      "college_computer_science",
+      "college_mathematics",
+      "college_medicine",
+      "college_physics",
+      "computer_security",
+      "conceptual_physics",
+      "econometrics",
+      "electrical_engineering",
+      "elementary_mathematics",
+      "formal_logic",
+      "global_facts",
+      "high_school_biology",
+      "high_school_chemistry",
+      "high_school_computer_science",
+      "high_school_european_history",
+      "high_school_geography",
+      "high_school_government_and_politics",
+      "high_school_macroeconomics",
+      "high_school_mathematics",
+      "high_school_microeconomics",
+      "high_school_physics",
+      "high_school_psychology",
+      "high_school_statistics",
+      "high_school_us_history",
+      "high_school_world_history",
+      "human_aging",
+      "human_sexuality",
+      "international_law",
+      "jurisprudence",
+      "logical_fallacies",
+      "machine_learning",
+      "management",
+      "marketing",
+      "medical_genetics",
+      "miscellaneous",
+      "moral_disputes",
+      "moral_scenarios",
+      "nutrition",
+      "philosophy",
+      "prehistory",
+      "professional_accounting",
+      "professional_law",
+      "professional_medicine",
+      "professional_psychology",
+      "public_relations",
+      "security_studies",
+      "sociology",
+      "us_foreign_policy",
+      "virology",
+      "world_religions"
+    ],
+    "model_names": [
+      "GPT-4 (2023)",
+      "GPT-4o (2024)",
+      "Claude-3 Opus",
+      "Claude-3.5 Sonnet",
+      "Gemini 1.5 Pro",
+      "LLaMA-3 70B",
+      "LLaMA-3 8B",
+      "Mixtral 8x22B",
+      "Qwen-2 72B",
+      "GPT-3.5 Turbo",
+      "PaLM-2",
+      "Mistral 7B"
+    ],
+    "seed": 42
+  }
+}

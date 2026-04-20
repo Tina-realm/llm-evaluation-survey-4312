@@ -1,0 +1,73 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Interpretation of Results}
+
+Our five frameworks demonstrate that mathematical tools from topology, sheaf theory, information geometry, and spectral analysis provide genuinely new information about LLM evaluation---information inaccessible to standard metrics.
+
+\para{Stability through topology.}
+The topological drift detection framework provides something no existing evaluation metric offers: a formal guarantee that observed differences reflect genuine structural change rather than measurement noise.
+The stability theorem (Theorem~\ref{thm:stability}) converts the Wasserstein distance of 1.77 into a provable lower bound on geometric displacement between model generations.
+This is qualitatively different from reporting that ``accuracy increased by $X$\%''---it guarantees that the capability \emph{landscape} has changed, not just a single summary statistic.
+
+\para{Composability through sheaves.}
+The sheaf-theoretic framework formally characterizes a problem practitioners face intuitively: when can we trust aggregate scores?
+Our consistency ratio directly measures information loss under aggregation.
+\gemini 1.5 Pro's ratio of 1.83 means that reporting its category-level scores discards 83\% more information relative to signal than \llama 8B's uniform profile.
+This provides actionable guidance: models with high consistency ratios require fine-grained evaluation; aggregate leaderboard rankings are formally misleading for these systems.
+
+\para{Geometry beyond accuracy.}
+The \fr distance reveals model relationships invisible to accuracy comparison.
+The small distance (0.31) between \claude Opus and \gpt, despite different overall accuracies, indicates shared capability \emph{structure}---similar relative strengths and weaknesses across subjects.
+This suggests architectural or training data similarities that raw performance numbers cannot capture.
+
+\para{Phase transitions in failure.}
+The emergence of $H_1$ features at threshold 0.8 reveals qualitative structure in the failure landscape.
+Below this threshold, failures decompose hierarchically; above it, cyclic dependencies emerge.
+This has practical implications: evaluation strategies that assume tree-structured failure modes (hierarchical decomposition, category-level analysis) break down for high-difficulty items.
+
+\para{Spectral fingerprints.}
+The spectral framework demonstrates that contamination creates detectable structural signatures in the performance matrix eigenspectrum.
+Unlike surface-level methods that can be evaded by paraphrasing~\citep{yang2023rethinking}, spectral detection operates on the correlation structure of performance boosts, which is preserved even when individual items are modified.
+
+\subsection{Limitations}
+
+We identify several limitations that scope the applicability of our current results.
+
+\para{Simulated data.}
+Model performance profiles are constructed from published accuracy scores rather than measured directly via API calls.
+While this provides realistic capability vectors, it does not capture the full distributional information (\eg per-question correctness patterns) that would strengthen the topological and spectral analyses.
+Direct evaluation via model APIs is a necessary next step.
+
+\para{Small sample size.}
+With 12 models in $\sR^{57}$, the point cloud is sparse relative to ambient dimension.
+The absence of $H_1$ features in the full cloud reflects this limitation rather than the absence of genuine topological structure.
+Scaling to 100+ models using approximate persistence algorithms~\citep{sheehy2013linear} would enable richer topological analysis.
+
+\para{Simplified sheaf construction.}
+Our sheaf uses linear restriction maps (weighted averaging), which captures aggregation behavior but not the full complexity of evaluation composition.
+Nonlinear restriction maps and computation of higher sheaf cohomology would provide stronger guarantees but require more sophisticated algebraic machinery.
+
+\para{Contamination validation.}
+We validate spectral detection using synthetic contamination injection rather than known real-world contamination cases.
+Validation against documented contamination events~\citep{shi2023detecting, xu2024contamination} would strengthen the practical applicability of this framework.
+
+\para{Computational cost.}
+Persistent homology computation scales as $O(n^3)$ in the number of simplices, which grows exponentially with point cloud size.
+For production-scale deployment with thousands of models, approximate algorithms or dimensionality reduction would be necessary.
+
+\subsection{Broader Implications}
+
+\para{Toward formal evaluation science.}
+Our work suggests that LLM evaluation can and should be placed on formal mathematical foundations.
+Just as statistical testing provides guarantees for hypothesis evaluation, topological and geometric tools can provide guarantees for model evaluation.
+The stability theorem transforms evaluation from empirical measurement into provable characterization.
+
+\para{Complementary to existing approaches.}
+We emphasize that our frameworks \emph{complement} rather than replace existing evaluation methods.
+Standard accuracy metrics remain essential for absolute performance assessment.
+Our frameworks add a layer of structural analysis that detects when standard metrics are unreliable (high consistency ratios), when rankings are unstable (small persistence features), and when data integrity is compromised (spectral anomalies).
+
+\para{Evaluation as mathematical object.}
+By treating evaluation data as mathematical objects (point clouds, sheaves, statistical manifolds, random matrices), we open the door to importing decades of theoretical results from pure mathematics.
+Each mathematical domain provides not just tools but \emph{theorems}---formal guarantees that the evaluation community currently lacks.

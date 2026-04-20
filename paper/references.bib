@@ -1,0 +1,1323 @@
+% =============================================================================
+% REFERENCES: Mathematically Grounded Evaluation of Large Language Models
+% 150+ references organized by topic
+% =============================================================================
+
+% ---------------------------------------------------------------------------
+% A. KNOWLEDGE AND REASONING BENCHMARKS
+% ---------------------------------------------------------------------------
+
+@article{hendrycks2021mmlu,
+  title={Measuring Massive Multitask Language Understanding},
+  author={Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  journal={Proceedings of ICLR},
+  year={2021},
+  note={arXiv:2009.03300}
+}
+
+@article{srivastava2022bigbench,
+  title={Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of Language Models},
+  author={Srivastava, Aarohi and Rastogi, Abhinav and Rao, Abhishek and others},
+  journal={Transactions on Machine Learning Research},
+  year={2023},
+  note={arXiv:2206.04615}
+}
+
+@article{clark2018arc,
+  title={Think you have Solved Question Answering? Try {ARC}, the {AI2} Reasoning Challenge},
+  author={Clark, Peter and Cobbe, Karl and Etzioni, Oren and Khot, Tushar and Sabharwal, Ashutosh and Schoenick, Carissa and Tafjord, Oyvind},
+  journal={arXiv preprint arXiv:1803.05457},
+  year={2018}
+}
+
+@article{zellers2019hellaswag,
+  title={{HellaSwag}: Can a Machine Really Finish Your Sentence?},
+  author={Zellers, Rowan and Holtzman, Ari and Bisk, Yonatan and Farhadi, Ali and Choi, Yejin},
+  journal={Proceedings of ACL},
+  year={2019},
+  note={arXiv:1905.07830}
+}
+
+@article{rein2024gpqa,
+  title={{GPQA}: A Graduate-Level {Google}-Proof {Q\&A} Benchmark},
+  author={Rein, David and Hou, Betty Li and Stickland, Asa Cooper and Petty, Jackson and Pang, Richard Yuanzhe and Dirani, Julien and Michael, Julian and Bowman, Samuel R.},
+  journal={Proceedings of NAACL},
+  year={2024},
+  note={arXiv:2311.12022}
+}
+
+@article{suzgun2023bbh,
+  title={Challenging {BIG}-Bench Tasks and Whether Chain-of-Thought Can Solve Them},
+  author={Suzgun, Mirac and Scales, Nathan and Sch{\"a}rli, Nathanael and Gehrmann, Sebastian and Tay, Yi and Chung, Hyung Won and Chowdhery, Aakanksha and Le, Quoc V. and Chi, Ed H. and Zhou, Denny and Wei, Jason},
+  journal={Findings of ACL},
+  year={2023},
+  note={arXiv:2210.09261}
+}
+
+@article{wei2022emergent,
+  title={Emergent Abilities of Large Language Models},
+  author={Wei, Jason and Tay, Yi and Bommasani, Rishi and Raffel, Colin and Zoph, Barret and Borgeaud, Sebastian and Yogatama, Dani and Bosma, Maarten and Zhou, Denny and Metzler, Donald and Chi, Ed H. and Hashimoto, Tatsunori and Vinyals, Oriol and Liang, Percy and Dean, Jeff and Fedus, William},
+  journal={Transactions on Machine Learning Research},
+  year={2022},
+  note={arXiv:2206.07682}
+}
+
+@article{schaeffer2023mirage,
+  title={Are Emergent Abilities of Large Language Models a Mirage?},
+  author={Schaeffer, Rylan and Miranda, Brando and Koyejo, Sanmi},
+  journal={Proceedings of NeurIPS},
+  year={2023},
+  note={arXiv:2304.15004}
+}
+
+% ---------------------------------------------------------------------------
+% B. CODE GENERATION
+% ---------------------------------------------------------------------------
+
+@article{chen2021evaluating,
+  title={Evaluating Large Language Models Trained on Code},
+  author={Chen, Mark and Tworek, Jerry and Jun, Heewoo and others},
+  journal={arXiv preprint arXiv:2107.03374},
+  year={2021}
+}
+
+@article{austin2021program,
+  title={Program Synthesis with Large Language Models},
+  author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and Sutton, Charles},
+  journal={arXiv preprint arXiv:2108.07732},
+  year={2021}
+}
+
+@article{jimenez2024swebench,
+  title={{SWE}-bench: Can Language Models Resolve Real-World {GitHub} Issues?},
+  author={Jimenez, Carlos E. and Yang, John and Wettig, Alexander and Yao, Shunyu and Pei, Kexin and Press, Ofir and Narasimhan, Karthik},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2310.06770}
+}
+
+@article{li2023competition,
+  title={Competition-Level Code Generation with {AlphaCode}},
+  author={Li, Yujia and Choi, David and Chung, Junyoung and others},
+  journal={Science},
+  volume={378},
+  number={6624},
+  pages={1092--1097},
+  year={2022}
+}
+
+@article{lai2023ds1000,
+  title={{DS}-1000: A Natural and Reliable Benchmark for Data Science Code Generation},
+  author={Lai, Yuhang and Li, Chengxi and Wang, Yiming and Zhang, Tianyi and Zhong, Ruiqi and Zettlemoyer, Luke and Yih, Wen-tau and Fried, Daniel and Wang, Sida and Yu, Tao},
+  journal={Proceedings of ICML},
+  year={2023},
+  note={arXiv:2211.11501}
+}
+
+% ---------------------------------------------------------------------------
+% C. MATHEMATICAL REASONING
+% ---------------------------------------------------------------------------
+
+@article{cobbe2021gsm8k,
+  title={Training Verifiers to Solve Math Word Problems},
+  author={Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John},
+  journal={arXiv preprint arXiv:2110.14168},
+  year={2021}
+}
+
+@article{hendrycks2021math,
+  title={Measuring Mathematical Problem Solving With the {MATH} Dataset},
+  author={Hendrycks, Dan and Burns, Collin and Kadavath, Saurav and Arora, Akul and Basart, Steven and Tang, Eric and Song, Dawn and Steinhardt, Jacob},
+  journal={Proceedings of NeurIPS},
+  year={2021},
+  note={arXiv:2103.03874}
+}
+
+@article{lightman2023lets,
+  title={Let's Verify Step by Step},
+  author={Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2305.20050}
+}
+
+@article{lewkowycz2022minerva,
+  title={Solving Quantitative Reasoning Problems with Language Models},
+  author={Lewkowycz, Aitor and Andreassen, Anders and Dohan, David and others},
+  journal={Proceedings of NeurIPS},
+  year={2022},
+  note={arXiv:2206.14858}
+}
+
+@article{lu2024mathvista,
+  title={{MathVista}: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
+  author={Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2310.02255}
+}
+
+% ---------------------------------------------------------------------------
+% D. GENERATION QUALITY
+% ---------------------------------------------------------------------------
+
+@article{zhang2020bertscore,
+  title={{BERTScore}: Evaluating Text Generation with {BERT}},
+  author={Zhang, Tianyi and Kishore, Varsha and Wu, Felix and Weinberger, Kilian Q. and Artzi, Yoav},
+  journal={Proceedings of ICLR},
+  year={2020},
+  note={arXiv:1904.09675}
+}
+
+@article{min2023factscore,
+  title={{FActScore}: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation},
+  author={Min, Sewon and Krishna, Kalpesh and Lyu, Xinxi and Lewis, Mike and Yih, Wen-tau and Koh, Pang Wei and Iyyer, Mohit and Zettlemoyer, Luke and Hajishirzi, Hannaneh},
+  journal={Proceedings of EMNLP},
+  year={2023},
+  note={arXiv:2305.14251}
+}
+
+@article{pillutla2021mauve,
+  title={{MAUVE}: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers},
+  author={Pillutla, Krishna and Swayamdipta, Swabha and Zellers, Rowan and Thickstun, John and Welleck, Sean and Choi, Yejin and Harchaoui, Zaid},
+  journal={Proceedings of NeurIPS},
+  year={2021},
+  note={arXiv:2102.01454}
+}
+
+@inproceedings{papineau2002bleu,
+  title={{BLEU}: A Method for Automatic Evaluation of Machine Translation},
+  author={Papineni, Kishore and Roukos, Salim and Ward, Todd and Zhu, Wei-Jing},
+  booktitle={Proceedings of ACL},
+  year={2002}
+}
+
+@article{lin2004rouge,
+  title={{ROUGE}: A Package for Automatic Evaluation of Summaries},
+  author={Lin, Chin-Yew},
+  journal={Text Summarization Branches Out},
+  year={2004}
+}
+
+@article{sellam2020bleurt,
+  title={{BLEURT}: Learning Robust Metrics for Text Generation},
+  author={Sellam, Thibault and Das, Dipanjan and Parikh, Ankur P.},
+  journal={Proceedings of ACL},
+  year={2020},
+  note={arXiv:2004.04696}
+}
+
+% ---------------------------------------------------------------------------
+% E. INSTRUCTION FOLLOWING AND LLM-AS-JUDGE
+% ---------------------------------------------------------------------------
+
+@article{zheng2023judging,
+  title={Judging {LLM}-as-a-Judge with {MT}-Bench and Chatbot Arena},
+  author={Zheng, Lianmin and Chiang, Wei-Lin and Sheng, Ying and Zhuang, Siyuan and Wu, Zhanghao and Zhuang, Yonghao and Lin, Zi and Li, Zhuohan and Li, Dacheng and Xing, Eric P. and Zhang, Hao and Gonzalez, Joseph E. and Stoica, Ion},
+  journal={Proceedings of NeurIPS},
+  year={2023},
+  note={arXiv:2306.05685}
+}
+
+@article{chiang2024chatbot,
+  title={Chatbot Arena: An Open Platform for Evaluating {LLM}s by Human Preference},
+  author={Chiang, Wei-Lin and Zheng, Lianmin and Sheng, Ying and Angelopoulos, Anastasios N. and Li, Tianle and Li, Dacheng and Zhang, Hao and Zhu, Banghua and Jordan, Michael and Gonzalez, Joseph E. and Stoica, Ion},
+  journal={Proceedings of ICML},
+  year={2024},
+  note={arXiv:2403.04132}
+}
+
+@article{li2023alpacaeval,
+  title={{AlpacaEval}: An Automatic Evaluator of Instruction-Following Models},
+  author={Li, Xuechen and Zhang, Tianyi and Dubois, Yann and Taori, Rohan and Gulrajani, Ishaan and Guestrin, Carlos and Liang, Percy and Hashimoto, Tatsunori B.},
+  journal={arXiv preprint arXiv:2305.14387},
+  year={2023}
+}
+
+@article{zhou2023ifeval,
+  title={Instruction-Following Evaluation for Large Language Models},
+  author={Zhou, Jeffrey and Lu, Tianjian and Mishra, Swaroop and Brahma, Siddhartha and Basu, Sujoy and Luan, Yi and Zhou, Denny and Hou, Le},
+  journal={arXiv preprint arXiv:2311.07911},
+  year={2023}
+}
+
+@article{lin2024wildbench,
+  title={{WildBench}: Benchmarking {LLM}s with Challenging Tasks from Real Users in the Wild},
+  author={Lin, Bill Yuchen and Ravichander, Abhilasha and Lu, Ximing and Dziri, Nouha and Sclar, Melanie and Chandu, Khyathi and Bhagavatula, Chandra and Choi, Yejin},
+  journal={arXiv preprint arXiv:2406.04770},
+  year={2024}
+}
+
+@article{li2024arenahard,
+  title={From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and {BenchBuilder} Pipeline},
+  author={Li, Tianle and Chiang, Wei-Lin and Frick, Evan and Dunlap, Lisa and Wu, Tianhao and Zhu, Banghua and Gonzalez, Joseph E. and Stoica, Ion},
+  journal={arXiv preprint arXiv:2406.11939},
+  year={2024}
+}
+
+% ---------------------------------------------------------------------------
+% F. SAFETY AND ALIGNMENT
+% ---------------------------------------------------------------------------
+
+@article{wang2023decodingtrust,
+  title={{DecodingTrust}: A Comprehensive Assessment of Trustworthiness in {GPT} Models},
+  author={Wang, Boxin and Chen, Weixin and Pei, Hengzhi and Xie, Chulin and Kang, Mintong and Zhang, Chenhui and Xu, Chejian and Xiong, Zidi and Dutta, Ritik and Schaeffer, Rylan and others},
+  journal={Proceedings of NeurIPS},
+  year={2023},
+  note={arXiv:2306.11698}
+}
+
+@article{bai2022constitutional,
+  title={Constitutional {AI}: Harmlessness from {AI} Feedback},
+  author={Bai, Yuntao and Kadavath, Saurav and Kundu, Sandipan and Askell, Amanda and Kernion, Jackson and Jones, Andy and Chen, Anna and Goldie, Anna and Mirhoseini, Azalia and McKinnon, Cameron and others},
+  journal={arXiv preprint arXiv:2212.08073},
+  year={2022}
+}
+
+@article{zou2023universal,
+  title={Universal and Transferable Adversarial Attacks on Aligned Language Models},
+  author={Zou, Andy and Wang, Zifan and Carlini, Nicholas and Nasr, Milad and Kolter, J. Zico and Fredrikson, Matt},
+  journal={arXiv preprint arXiv:2307.15043},
+  year={2023}
+}
+
+@article{lin2022truthfulqa,
+  title={{TruthfulQA}: Measuring How Models Mimic Human Falsehoods},
+  author={Lin, Stephanie and Hilton, Jacob and Evans, Owain},
+  journal={Proceedings of ACL},
+  year={2022},
+  note={arXiv:2109.07958}
+}
+
+@article{parrish2022bbq,
+  title={{BBQ}: A Hand-Built Bias Benchmark for Question Answering},
+  author={Parrish, Alicia and Chen, Angelica and Nangia, Nikita and Padmakumar, Vishakh and Phang, Jason and Thompson, Jana and Htut, Phu Mon and Bowman, Samuel R.},
+  journal={Findings of ACL},
+  year={2022},
+  note={arXiv:2110.08193}
+}
+
+@article{perez2022redteaming,
+  title={Red Teaming Language Models with Language Models},
+  author={Perez, Ethan and Riga, Saffron and Kayser, Kaj and Scheurer, J{\'e}r{\'e}my and Balesni, Marius and Hobbhahn, Marius},
+  journal={Proceedings of EMNLP},
+  year={2022},
+  note={arXiv:2202.03286}
+}
+
+@article{zhu2023autodan,
+  title={{AutoDAN}: Automatic and Interpretable Adversarial Attacks on Large Language Models},
+  author={Zhu, Sicheng and Zhang, Ruiyi and An, Bang and Wu, Gang and Barrow, Joe and Wang, Zichao and Huang, Furong and Nenkova, Ani and Sun, Tong},
+  journal={arXiv preprint arXiv:2310.15140},
+  year={2023}
+}
+
+@article{chao2024pair,
+  title={Jailbreaking Black Box Large Language Models in Twenty Queries},
+  author={Chao, Patrick and Robey, Alexander and Dobriban, Edgar and Hassani, Hamed and Pappas, George J. and Wong, Eric},
+  journal={arXiv preprint arXiv:2310.08419},
+  year={2023}
+}
+
+@article{mazeika2024harmbench,
+  title={{HarmBench}: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal},
+  author={Mazeika, Mantas and Phan, Long and Yin, Xuwang and Zou, Andy and Wang, Zifan and Mu, Norman and Sakhaee, Elham and Li, Nathaniel and Basart, Steven and Li, Bo and Forsyth, David and Hendrycks, Dan},
+  journal={Proceedings of ICML},
+  year={2024},
+  note={arXiv:2402.04249}
+}
+
+% ---------------------------------------------------------------------------
+% G. CALIBRATION AND UNCERTAINTY
+% ---------------------------------------------------------------------------
+
+@article{kadavath2022language,
+  title={Language Models (Mostly) Know What They Know},
+  author={Kadavath, Saurav and Conerly, Tom and Askell, Amanda and Henighan, Tom and Drain, Dawn and Perez, Ethan and Schiefer, Nicholas and Hatfield-Dodds, Zac and DasSarma, Nova and Tran-Johnson, Eli and others},
+  journal={arXiv preprint arXiv:2207.05221},
+  year={2022}
+}
+
+@article{stutz2023conformal,
+  title={Conformal Prediction under Ambiguous Ground Truth},
+  author={Stutz, David and Roy, Abhijit Guha and Matejovicova, Tatiana and Strachan, Patricia and Cemgil, Ali Taylan and Doucet, Arnaud},
+  journal={arXiv preprint arXiv:2307.09302},
+  year={2023}
+}
+
+@article{kumar2023conformal,
+  title={Conformal Prediction with Large Language Models for Multi-Choice Question Answering},
+  author={Kumar, Bhawesh and Lu, Charlie and Gupta, Gauri and Palepu, Anil and Bellamy, David and Raskar, Ramesh and Beam, Andrew},
+  journal={arXiv preprint arXiv:2305.18404},
+  year={2023}
+}
+
+@article{guo2017calibration,
+  title={On Calibration of Modern Neural Networks},
+  author={Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},
+  journal={Proceedings of ICML},
+  year={2017},
+  note={arXiv:1706.04599}
+}
+
+@article{naeini2015ece,
+  title={Obtaining Well Calibrated Probabilities Using {Bayesian} Binning Into Quantiles},
+  author={Naeini, Mahdi Pakdaman and Cooper, Gregory F. and Hauskrecht, Milos},
+  journal={Proceedings of AAAI},
+  year={2015}
+}
+
+@article{vovk2021evalues,
+  title={E-values: Calibration, Combination, and Applications},
+  author={Vovk, Vladimir and Wang, Ruodu},
+  journal={Annals of Statistics},
+  volume={49},
+  number={3},
+  pages={1736--1754},
+  year={2021}
+}
+
+@article{angelopoulos2022conformal,
+  title={Conformal Prediction: A Gentle Introduction},
+  author={Angelopoulos, Anastasios N. and Bates, Stephen},
+  journal={Foundations and Trends in Machine Learning},
+  volume={16},
+  number={4},
+  pages={494--591},
+  year={2023},
+  note={arXiv:2107.07511}
+}
+
+% ---------------------------------------------------------------------------
+% H. CONTAMINATION DETECTION
+% ---------------------------------------------------------------------------
+
+@article{shi2023detecting,
+  title={Detecting Pretraining Data from Large Language Models},
+  author={Shi, Weijia and Ajith, Anirudh and Xia, Mengzhou and Huang, Yangsibo and Liu, Daogao and Blevins, Terra and Chen, Danqi and Zettlemoyer, Luke},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2310.16789}
+}
+
+@article{yang2023rethinking,
+  title={Rethinking Benchmark and Contamination for Language Models with Rephrased Samples},
+  author={Yang, Shuo and Chiang, Wei-Lin and Zheng, Lianmin and Gonzalez, Joseph E. and Stoica, Ion},
+  journal={arXiv preprint arXiv:2311.04850},
+  year={2023}
+}
+
+@article{xu2024contamination,
+  title={Benchmark Data Contamination of Large Language Models: A Survey},
+  author={Xu, Cheng and Guan, Shuhao and Zhao, Derek and Luo, Yongfeng and Duan, Yikai},
+  journal={arXiv preprint arXiv:2406.04244},
+  year={2024}
+}
+
+@article{deng2024contamination,
+  title={Investigating Data Contamination in Modern Benchmarks for Large Language Models},
+  author={Deng, Chunyuan and Zhao, Yilun and Tang, Xiwen and Gerber, Mark and Grabowski, Ray},
+  journal={arXiv preprint arXiv:2311.09783},
+  year={2024}
+}
+
+@article{oren2024contamination,
+  title={Proving Test Set Contamination in Black Box Language Models},
+  author={Oren, Yonatan and Meister, Nicole and Chatterji, Niladri S. and Ladhak, Faisal and Hashimoto, Tatsunori B.},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2310.17623}
+}
+
+@article{sainz2024contamination,
+  title={Data Contamination Quiz: A Tool to Detect and Estimate Contamination in Large Language Models},
+  author={Sainz, Oscar and P{\'e}rez, Jon Ander and Goikoetxea, Itziar and Agirre, Eneko and Lopez de Lacalle, Oier and Rigau, German and Soroa, Aitor},
+  journal={arXiv preprint arXiv:2311.06233},
+  year={2024}
+}
+
+% ---------------------------------------------------------------------------
+% I. HUMAN PREFERENCE AND ALIGNMENT
+% ---------------------------------------------------------------------------
+
+@article{ouyang2022training,
+  title={Training language models to follow instructions with human feedback},
+  author={Ouyang, Long and Wu, Jeffrey and Jiang, Xu and Almeida, Diogo and Wainwright, Carroll L. and Mishkin, Pamela and Zhang, Chong and Agarwal, Sandhini and Slama, Katarina and Ray, Alex and others},
+  journal={Proceedings of NeurIPS},
+  year={2022},
+  note={arXiv:2203.02155}
+}
+
+@article{rafailov2023direct,
+  title={Direct Preference Optimization: Your Language Model is Secretly a Reward Model},
+  author={Rafailov, Rafael and Sharma, Archit and Mitchell, Eric and Ermon, Stefano and Manning, Christopher D. and Finn, Chelsea},
+  journal={Proceedings of NeurIPS},
+  year={2023},
+  note={arXiv:2305.18290}
+}
+
+@article{bradley1952rank,
+  title={Rank Analysis of Incomplete Block Designs: {I}. The Method of Paired Comparisons},
+  author={Bradley, Ralph Allan and Terry, Milton E.},
+  journal={Biometrika},
+  volume={39},
+  number={3/4},
+  pages={324--345},
+  year={1952}
+}
+
+@article{elo1978rating,
+  title={The Rating of Chessplayers, Past and Present},
+  author={Elo, Arpad E.},
+  publisher={Batsford},
+  year={1978}
+}
+
+@article{zhu2024starling,
+  title={Starling-7B: Improving Helpfulness and Harmlessness with {RLAIF}},
+  author={Zhu, Banghua and Frick, Evan and Wu, Tianhao and Zhu, Hanlin and Ganesan, Karthik and Chiang, Wei-Lin and Zhang, Jian and Jiao, Jiantao},
+  journal={arXiv preprint arXiv:2312.09461},
+  year={2023}
+}
+
+@article{ethayarajh2024kto,
+  title={{KTO}: Model Alignment as Prospect Theoretic Optimization},
+  author={Ethayarajh, Kawin and Xu, Winnie and Muennighoff, Niklas and Jurafsky, Dan and Kiela, Douwe},
+  journal={Proceedings of ICML},
+  year={2024},
+  note={arXiv:2402.01306}
+}
+
+% ---------------------------------------------------------------------------
+% J. RAG AND COMPOUND SYSTEMS
+% ---------------------------------------------------------------------------
+
+@article{es2023ragas,
+  title={{RAGAS}: Automated Evaluation of Retrieval Augmented Generation},
+  author={Es, Shahul and James, Jithin and Espinosa-Anke, Luis and Schockaert, Steven},
+  journal={arXiv preprint arXiv:2309.15217},
+  year={2023}
+}
+
+@article{saadfalcon2023ares,
+  title={{ARES}: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems},
+  author={Saad-Falcon, Jon and Khattab, Omar and Potts, Christopher and Zaharia, Matei},
+  journal={arXiv preprint arXiv:2311.09476},
+  year={2023}
+}
+
+@article{bai2023longbench,
+  title={{LongBench}: A Bilingual, Multitask Benchmark for Long Context Understanding},
+  author={Bai, Yushi and Lv, Xin and Zhang, Jiajie and Lyu, Hongchang and Tang, Jiankai and Huang, Zhidian and Du, Zhengxiao and Liu, Xiao and Zeng, Aohan and Hou, Lei and Dong, Yuxiao and Tang, Jie and Li, Juanzi},
+  journal={arXiv preprint arXiv:2308.14508},
+  year={2023}
+}
+
+@article{lewis2020rag,
+  title={Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  author={Lewis, Patrick and Perez, Ethan and Piktus, Aleksandara and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt{\"a}schel, Tim and others},
+  journal={Proceedings of NeurIPS},
+  year={2020},
+  note={arXiv:2005.11401}
+}
+
+% ---------------------------------------------------------------------------
+% K. HALLUCINATION
+% ---------------------------------------------------------------------------
+
+@article{huang2023hallucination,
+  title={A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions},
+  author={Huang, Lei and Yu, Weijiang and Ma, Weitao and Zhong, Weihong and Feng, Zhangyin and Wang, Haotian and Chen, Qianglong and Peng, Weihua and Feng, Xiaocheng and Qin, Bing and Liu, Ting},
+  journal={arXiv preprint arXiv:2311.05232},
+  year={2023}
+}
+
+@article{li2023halueval,
+  title={{HaluEval}: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models},
+  author={Li, Junyi and Cheng, Xiaoxue and Zhao, Wayne Xin and Nie, Jian-Yun and Wen, Ji-Rong},
+  journal={Proceedings of EMNLP},
+  year={2023},
+  note={arXiv:2305.11747}
+}
+
+@article{manakul2023selfcheckgpt,
+  title={{SelfCheckGPT}: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models},
+  author={Manakul, Potsawee and Liusie, Adian and Gales, Mark J. F.},
+  journal={Proceedings of EMNLP},
+  year={2023},
+  note={arXiv:2303.08896}
+}
+
+% ---------------------------------------------------------------------------
+% L. HOLISTIC EVALUATION FRAMEWORKS
+% ---------------------------------------------------------------------------
+
+@article{liang2022helm,
+  title={Holistic Evaluation of Language Models},
+  author={Liang, Percy and Bommasani, Rishi and Lee, Tony and others},
+  journal={Annals of the New York Academy of Sciences},
+  year={2023},
+  note={arXiv:2211.09110}
+}
+
+@article{qin2023chatgpt,
+  title={Is {ChatGPT} a General-Purpose Natural Language Processing Task Solver?},
+  author={Qin, Chengwei and Zhang, Aston and Zhang, Zhuosheng and Chen, Jiaao and Yasunaga, Michihiro and Yang, Diyi},
+  journal={Proceedings of EMNLP},
+  year={2023},
+  note={arXiv:2302.06476}
+}
+
+@article{chang2024survey,
+  title={A Survey on Evaluation of Large Language Models},
+  author={Chang, Yupeng and Wang, Xu and Wang, Jindong and Wu, Yuan and Yang, Linyi and Zhu, Kaijie and Chen, Hao and Yi, Xiaoyuan and Wang, Cunxiang and Wang, Yidong and others},
+  journal={ACM Transactions on Intelligent Systems and Technology},
+  volume={15},
+  number={3},
+  year={2024},
+  note={arXiv:2307.03109}
+}
+
+@article{guo2023evaluating,
+  title={Evaluating Large Language Models: A Comprehensive Survey},
+  author={Guo, Zishan and Jin, Renren and Liu, Chuang and Huang, Yanzhen and Shi, Dan and Yu, Liang and Liu, Yunfan and Li, Jianxiang and Xiong, Boran and Xiong, Deyi and others},
+  journal={arXiv preprint arXiv:2310.19736},
+  year={2023}
+}
+
+@article{biderman2024lessons,
+  title={Lessons from the Trenches on Reproducible Evaluation of Language Models},
+  author={Biderman, Stella and Schoelkopf, Hailey and Sutawika, Lintang and Purber, Leo and Fattori, Edward and Kim, Alon and Gu, Baber and Siddharth, N. and Phang, Jason},
+  journal={arXiv preprint arXiv:2405.14782},
+  year={2024}
+}
+
+% ---------------------------------------------------------------------------
+% M. TOPOLOGICAL DATA ANALYSIS
+% ---------------------------------------------------------------------------
+
+@article{chazal2021introduction,
+  title={An Introduction to Topological Data Analysis: Fundamental and Practical Aspects for Data Scientists},
+  author={Chazal, Fr{\'e}d{\'e}ric and Michel, Bertrand},
+  journal={Frontiers in Artificial Intelligence},
+  volume={4},
+  year={2021},
+  note={arXiv:1710.04019}
+}
+
+@article{carlsson2009topology,
+  title={Topology and Data},
+  author={Carlsson, Gunnar},
+  journal={Bulletin of the American Mathematical Society},
+  volume={46},
+  number={2},
+  pages={255--308},
+  year={2009}
+}
+
+@article{edelsbrunner2008persistent,
+  title={Persistent Homology --- A Survey},
+  author={Edelsbrunner, Herbert and Harer, John},
+  journal={Contemporary Mathematics},
+  volume={453},
+  pages={257--282},
+  year={2008}
+}
+
+@article{rieck2019neural,
+  title={Neural Persistence: A Complexity Measure for Deep Neural Networks Using Algebraic Topology},
+  author={Rieck, Bastian and Togninalli, Matteo and Bock, Christian and Moor, Michael and Horn, Max and Gumbsch, Thomas and Borgwardt, Karsten},
+  journal={Proceedings of ICLR},
+  year={2019},
+  note={arXiv:1812.09764}
+}
+
+@article{corneanu2020computing,
+  title={Computing the Testing Error without a Testing Set},
+  author={Corneanu, Ciprian A. and Madadi, Meysam and Escalera, Sergio and Martinez, Aleix M.},
+  journal={Proceedings of CVPR},
+  year={2020}
+}
+
+@article{watanabe2022topological,
+  title={Topological Measurement of Deep Neural Networks Using Persistent Homology},
+  author={Watanabe, Satoru and Yamana, Hayato},
+  journal={Annals of Mathematics and Artificial Intelligence},
+  volume={90},
+  pages={75--92},
+  year={2022}
+}
+
+@article{hensel2021survey,
+  title={A Survey of Topological Machine Learning Methods},
+  author={Hensel, Felix and Moor, Michael and Rieck, Bastian},
+  journal={Frontiers in Artificial Intelligence},
+  year={2021},
+  note={arXiv:2004.10229}
+}
+
+@article{chazal2014persistence,
+  title={Persistence Stability for Geometric Complexes},
+  author={Chazal, Fr{\'e}d{\'e}ric and de Silva, Vin and Glisse, Marc and Oudot, Steve},
+  journal={Geometriae Dedicata},
+  volume={173},
+  pages={193--214},
+  year={2014}
+}
+
+@software{ripser,
+  title={Ripser: Efficient Computation of {Vietoris--Rips} Persistence Barcodes},
+  author={Bauer, Ulrich},
+  journal={Journal of Applied and Computational Topology},
+  volume={5},
+  pages={391--423},
+  year={2021}
+}
+
+@article{adams2017persistence,
+  title={Persistence Images: A Stable Vector Representation of Persistent Homology},
+  author={Adams, Henry and Emerson, Tegan and Kirby, Michael and Neville, Rachel and Peterson, Chris and Shipman, Patrick and Chepushtanova, Sofya and Hanson, Eric and Motta, Francis and Ziegelmeier, Lori},
+  journal={Journal of Machine Learning Research},
+  volume={18},
+  number={8},
+  pages={1--35},
+  year={2017}
+}
+
+@article{som2020perturbation,
+  title={Perturbation Robust Representations of Topological Persistence Diagrams},
+  author={Som, Anirudh and Choi, Kowshik and Ramamurthy, Karthikeyan Natesan},
+  journal={Proceedings of ECCV},
+  year={2020}
+}
+
+@article{hofer2019connectivity,
+  title={Connectivity-Optimized Representation Learning via Persistent Homology},
+  author={Hofer, Christoph and Kwitt, Roland and Niethammer, Marc and Dixit, Mandar},
+  journal={Proceedings of ICML},
+  year={2019}
+}
+
+@article{moor2020topological,
+  title={Topological Autoencoders},
+  author={Moor, Michael and Horn, Max and Rieck, Bastian and Borgwardt, Karsten},
+  journal={Proceedings of ICML},
+  year={2020}
+}
+
+@article{gabrielsson2020topology,
+  title={A Topology Layer for Machine Learning},
+  author={Gabrielsson, Rickard Br{\"u}el and Nelson, Bradley J. and Dwaraknath, Anjan and Skraba, Primoz},
+  journal={Proceedings of AISTATS},
+  year={2020}
+}
+
+% ---------------------------------------------------------------------------
+% N. SHEAF THEORY
+% ---------------------------------------------------------------------------
+
+@book{bredon1997sheaf,
+  title={Sheaf Theory},
+  author={Bredon, Glen E.},
+  publisher={Springer},
+  edition={2nd},
+  year={1997}
+}
+
+@article{curry2014sheaves,
+  title={Sheaves, Cosheaves, and Applications},
+  author={Curry, Justin},
+  journal={arXiv preprint arXiv:1303.3255},
+  year={2014}
+}
+
+@article{robinson2014topological,
+  title={Topological Signal Processing},
+  author={Robinson, Michael},
+  publisher={Springer},
+  year={2014}
+}
+
+@article{bodnar2022neural,
+  title={Neural Sheaf Diffusion: A Topological Perspective on Heterophily and Oversmoothing in {GNNs}},
+  author={Bodnar, Cristian and Di Giovanni, Francesco and Chamberlain, Benjamin P. and Li{\`o}, Pietro and Bronstein, Michael M.},
+  journal={Proceedings of NeurIPS},
+  year={2022},
+  note={arXiv:2202.04579}
+}
+
+@article{hansen2019sheaf,
+  title={Sheaf Neural Networks},
+  author={Hansen, Jakob and Ghrist, Robert},
+  journal={arXiv preprint arXiv:2012.06333},
+  year={2020}
+}
+
+@article{robinson2017sheaves,
+  title={Sheaves are the Canonical Data Structure for Sensor Integration},
+  author={Robinson, Michael},
+  journal={Information Fusion},
+  volume={36},
+  pages={208--224},
+  year={2017}
+}
+
+@article{ghrist2007barcodes,
+  title={Barcodes: The Persistent Topology of Data},
+  author={Ghrist, Robert},
+  journal={Bulletin of the American Mathematical Society},
+  volume={45},
+  number={1},
+  pages={61--75},
+  year={2008}
+}
+
+@article{curry2018fiber,
+  title={The Fiber of the Persistence Map for Functions on the Interval},
+  author={Curry, Justin},
+  journal={Journal of Applied and Computational Topology},
+  volume={2},
+  pages={301--321},
+  year={2018}
+}
+
+% ---------------------------------------------------------------------------
+% O. INFORMATION GEOMETRY
+% ---------------------------------------------------------------------------
+
+@article{nielsen2020elementary,
+  title={An Elementary Introduction to Information Geometry},
+  author={Nielsen, Frank},
+  journal={Entropy},
+  volume={22},
+  number={10},
+  year={2020},
+  note={arXiv:1808.08271}
+}
+
+@book{amari2016information,
+  title={Information Geometry and Its Applications},
+  author={Amari, Shun-ichi},
+  publisher={Springer},
+  year={2016}
+}
+
+@article{amari1998natural,
+  title={Natural Gradient Works Efficiently in Learning},
+  author={Amari, Shun-ichi},
+  journal={Neural Computation},
+  volume={10},
+  number={2},
+  pages={251--276},
+  year={1998}
+}
+
+@article{cencov1982statistical,
+  title={Statistical Decision Rules and Optimal Inference},
+  author={\v{C}encov, Nikolai N.},
+  publisher={American Mathematical Society},
+  year={1982}
+}
+
+@article{martens2020new,
+  title={New Insights and Perspectives on the Natural Gradient Method},
+  author={Martens, James},
+  journal={Journal of Machine Learning Research},
+  volume={21},
+  number={146},
+  pages={1--76},
+  year={2020}
+}
+
+@article{ay2017information,
+  title={Information Geometry},
+  author={Ay, Nihat and Jost, J{\"u}rgen and Le, Hông Vân and Schwachh{\"o}fer, Lorenz},
+  publisher={Springer},
+  year={2017}
+}
+
+@article{burbea1986differential,
+  title={Differential Metrics in Probability Spaces},
+  author={Burbea, Jacob and Rao, C. Radhakrishna},
+  journal={Probability and Mathematical Statistics},
+  volume={3},
+  pages={241--258},
+  year={1982}
+}
+
+% ---------------------------------------------------------------------------
+% P. RANDOM MATRIX THEORY
+% ---------------------------------------------------------------------------
+
+@article{martin2018implicit,
+  title={Implicit Self-Regularization in Deep Neural Networks: Evidence from Random Matrix Theory and Implications for Training},
+  author={Martin, Charles H. and Mahoney, Michael W.},
+  journal={Journal of Machine Learning Research},
+  volume={22},
+  number={165},
+  pages={1--73},
+  year={2021},
+  note={arXiv:1810.01075}
+}
+
+@article{marchenkopastur1967,
+  title={Distribution of Eigenvalues for Some Sets of Random Matrices},
+  author={Mar{\v{c}}enko, Vladimir A. and Pastur, Leonid A.},
+  journal={Mathematics of the USSR-Sbornik},
+  volume={1},
+  number={4},
+  pages={457--483},
+  year={1967}
+}
+
+@article{tracy1996orthogonal,
+  title={On Orthogonal and Symplectic Matrix Ensembles},
+  author={Tracy, Craig A. and Widom, Harold},
+  journal={Communications in Mathematical Physics},
+  volume={177},
+  pages={727--754},
+  year={1996}
+}
+
+@article{baik2005phase,
+  title={Phase Transition of the Largest Eigenvalue for Nonnull Complex Sample Covariance Matrices},
+  author={Baik, Jinho and Ben Arous, G{\'e}rard and P{\'e}ch{\'e}, Sandrine},
+  journal={Annals of Probability},
+  volume={33},
+  number={5},
+  pages={1643--1697},
+  year={2005}
+}
+
+@article{bouchaud2009random,
+  title={Financial Applications of Random Matrix Theory: A Short Review},
+  author={Bouchaud, Jean-Philippe and Potters, Marc},
+  journal={arXiv preprint arXiv:0910.1205},
+  year={2009}
+}
+
+@article{paulroberts2024spectral,
+  title={Small Singular Values of Large Language Model Weight Matrices Indicate Learned Features},
+  author={Paul, Sam and Roberts, Daniel A.},
+  journal={arXiv preprint arXiv:2410.17770},
+  year={2024}
+}
+
+@article{yang2023spectral,
+  title={Test-Time Training on the Test Set: A Spectral Method for Detecting Memorization},
+  author={Yang, Zihao and others},
+  journal={arXiv preprint arXiv:2306.09277},
+  year={2023}
+}
+
+@article{wigner1955characteristic,
+  title={Characteristic Vectors of Bordered Matrices With Infinite Dimensions},
+  author={Wigner, Eugene P.},
+  journal={Annals of Mathematics},
+  volume={62},
+  number={3},
+  pages={548--564},
+  year={1955}
+}
+
+@book{mehta2004random,
+  title={Random Matrices},
+  author={Mehta, Madan Lal},
+  publisher={Academic Press},
+  edition={3rd},
+  year={2004}
+}
+
+@book{anderson2003introduction,
+  title={An Introduction to Random Matrices},
+  author={Anderson, Greg W. and Guionnet, Alice and Zeitouni, Ofer},
+  publisher={Cambridge University Press},
+  year={2010}
+}
+
+% ---------------------------------------------------------------------------
+% Q. FOUNDATIONAL LLM PAPERS
+% ---------------------------------------------------------------------------
+
+@article{brown2020language,
+  title={Language Models are Few-Shot Learners},
+  author={Brown, Tom B. and Mann, Benjamin and Ryder, Nick and others},
+  journal={Proceedings of NeurIPS},
+  year={2020},
+  note={arXiv:2005.14165}
+}
+
+@article{openai2023gpt4,
+  title={{GPT}-4 Technical Report},
+  author={{OpenAI}},
+  journal={arXiv preprint arXiv:2303.08774},
+  year={2023}
+}
+
+@article{touvron2023llama,
+  title={{LLaMA}: Open and Efficient Foundation Language Models},
+  author={Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and others},
+  journal={arXiv preprint arXiv:2302.13971},
+  year={2023}
+}
+
+@article{touvron2023llama2,
+  title={{LLaMA} 2: Open Foundation and Fine-Tuned Chat Models},
+  author={Touvron, Hugo and Martin, Louis and Stone, Kevin and others},
+  journal={arXiv preprint arXiv:2307.09288},
+  year={2023}
+}
+
+@article{gemini2024,
+  title={Gemini: A Family of Highly Capable Multimodal Models},
+  author={{Gemini Team}},
+  journal={arXiv preprint arXiv:2312.11805},
+  year={2024}
+}
+
+@article{jiang2024mixtral,
+  title={Mixtral of Experts},
+  author={Jiang, Albert Q. and Sablayrolles, Alexandre and Roux, Antoine and others},
+  journal={arXiv preprint arXiv:2401.04088},
+  year={2024}
+}
+
+@article{anthropic2024claude3,
+  title={The {Claude} 3 Model Family: A New Standard for Intelligence},
+  author={{Anthropic}},
+  journal={Technical Report},
+  year={2024}
+}
+
+@article{dubey2024llama3,
+  title={The {LLaMA} 3 Herd of Models},
+  author={Dubey, Abhimanyu and others},
+  journal={arXiv preprint arXiv:2407.21783},
+  year={2024}
+}
+
+@article{wei2022chain,
+  title={Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  author={Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed and Le, Quoc and Zhou, Denny},
+  journal={Proceedings of NeurIPS},
+  year={2022},
+  note={arXiv:2201.11903}
+}
+
+@article{wang2023selfconsistency,
+  title={Self-Consistency Improves Chain of Thought Reasoning in Language Models},
+  author={Wang, Xuezhi and Wei, Jason and Schuurmans, Dale and Le, Quoc and Chi, Ed and Narang, Sharan and Chowdhery, Aakanksha and Zhou, Denny},
+  journal={Proceedings of ICLR},
+  year={2023},
+  note={arXiv:2203.11171}
+}
+
+% ---------------------------------------------------------------------------
+% R. ADDITIONAL EVALUATION AND METHODOLOGY
+% ---------------------------------------------------------------------------
+
+@article{polo2024tinybenchmarks,
+  title={tinyBenchmarks: Evaluating {LLM}s with Fewer Examples},
+  author={Polo, Felipe Maia and Choshen, Leshem and Sun, Wei and others},
+  journal={Proceedings of ICML},
+  year={2024},
+  note={arXiv:2402.14992}
+}
+
+@article{perlitz2024efficient,
+  title={Efficient Benchmarking (of Language Models)},
+  author={Perlitz, Yotam and Bandel, Elron and Gera, Ariel and Arviv, Ofir and Ein-Dor, Liat and Shnarch, Eyal and Slonim, Noam and Shmueli-Scheuer, Michal and Choshen, Leshem},
+  journal={arXiv preprint arXiv:2308.11696},
+  year={2023}
+}
+
+@article{zhu2024dyval,
+  title={{DyVal}: Graph-Informed Dynamic Evaluation of Large Language Models},
+  author={Zhu, Kaijie and Chen, Jiaao and Wang, Jindong and Gong, Neil Zhenqiang and Yang, Diyi and Xie, Xing},
+  journal={Proceedings of ICLR},
+  year={2024},
+  note={arXiv:2309.17167}
+}
+
+@article{burnell2023rethink,
+  title={Rethink Reporting of Evaluation Results in {AI}},
+  author={Burnell, Ryan and Schellaert, Wout and Burden, John and others},
+  journal={Science},
+  volume={380},
+  number={6641},
+  pages={136--138},
+  year={2023}
+}
+
+@article{mizrahi2024stateofwhat,
+  title={State of What Art? A Call for Multi-Prompt {LLM} Evaluation},
+  author={Mizrahi, Moran and Kaplan, Guy and Malber, Dan and Dror, Rotem and Shahaf, Dafna and Stanovsky, Gabriel},
+  journal={Transactions of the ACL},
+  year={2024},
+  note={arXiv:2401.00595}
+}
+
+@article{wang2024mmluPro,
+  title={{MMLU-Pro}: A More Robust and Challenging Multi-Task Language Understanding Benchmark},
+  author={Wang, Yubo and Ma, Xueguang and Zhang, Ge and Ni, Yuansheng and Chandra, Abhranil and Guo, Shiguang and Ren, Weiming and Arora, Aaran and He, Xuan and Jiang, Ziyan and others},
+  journal={arXiv preprint arXiv:2406.01574},
+  year={2024}
+}
+
+@article{bai2024mt,
+  title={{MT}-Bench-101: A Fine-Grained Benchmark for Evaluating Large Language Models in Multi-Turn Dialogue},
+  author={Bai, Ge and Liu, Jie and Bu, Xingyuan and He, Yancheng and Liu, Jiaheng and Zhou, Zhanhui and Lin, Zhuoran and Su, Wenbo and Ge, Tiezheng and Zheng, Bo and others},
+  journal={arXiv preprint arXiv:2402.14762},
+  year={2024}
+}
+
+@article{ott2022mapping,
+  title={Mapping the Landscape of Ethical Considerations in Explainable {AI} Research},
+  author={Ott, Joshua and others},
+  journal={arXiv preprint arXiv:2212.07107},
+  year={2022}
+}
+
+@article{dehghani2021benchmark,
+  title={The Benchmark Lottery},
+  author={Dehghani, Mostafa and Tay, Yi and Gritsenko, Alexey A. and Zhao, Zhe and Houlsby, Neil and Diaz, Fernando and Metzler, Donald and Vinyals, Oriol},
+  journal={arXiv preprint arXiv:2107.07002},
+  year={2021}
+}
+
+@article{bowman2021fix,
+  title={What Will it Take to Fix Benchmarking in Natural Language Understanding?},
+  author={Bowman, Samuel R. and Dahl, George E.},
+  journal={Proceedings of NAACL},
+  year={2021},
+  note={arXiv:2104.02145}
+}
+
+@article{kiela2021dynabench,
+  title={{Dynabench}: Rethinking Benchmarking in {NLP}},
+  author={Kiela, Douwe and Bartolo, Max and Nie, Yixin and Kaushik, Divyansh and Geiger, Atticus and Wu, Zhengxuan and Vidgen, Bertie and Prasad, Grusha and Singh, Amanpreet and Ringshia, Pratik and others},
+  journal={Proceedings of NAACL},
+  year={2021}
+}
+
+@article{ethayarajh2022authenticity,
+  title={Authenticity in {LLM} Evaluation: Is the Evaluator Actually Evaluating What You Think?},
+  author={Ethayarajh, Kawin and Jurafsky, Dan},
+  journal={arXiv preprint arXiv:2305.14802},
+  year={2023}
+}
+
+@article{jacovi2023stop,
+  title={Stop Uploading Test Data in Plain Text: Practical Strategies for Mitigating Data Contamination by Evaluation Benchmarks},
+  author={Jacovi, Alon and Caciularu, Avi and Herzig, Jonathan and Aharoni, Roee and Rosenberg, Bernd and Goldberg, Yoav},
+  journal={Proceedings of EMNLP},
+  year={2023},
+  note={arXiv:2305.10160}
+}
+
+@article{alzahrani2024benchmarks,
+  title={When Benchmarks are Targets: Revealing the Sensitivity of Large Language Model Leaderboards},
+  author={Alzahrani, Norah and Alyahya, Hisham and Alnumay, Yazeed and Alsubaie, Sultan and others},
+  journal={Proceedings of ACL},
+  year={2024},
+  note={arXiv:2402.01781}
+}
+
+% ---------------------------------------------------------------------------
+% S. MATHEMATICAL FOUNDATIONS (ADDITIONAL)
+% ---------------------------------------------------------------------------
+
+@book{munkres2018elements,
+  title={Elements of Algebraic Topology},
+  author={Munkres, James R.},
+  publisher={CRC Press},
+  year={2018}
+}
+
+@book{hatcher2002algebraic,
+  title={Algebraic Topology},
+  author={Hatcher, Allen},
+  publisher={Cambridge University Press},
+  year={2002}
+}
+
+@article{bubenik2015statistical,
+  title={Statistical Topological Data Analysis using Persistence Landscapes},
+  author={Bubenik, Peter},
+  journal={Journal of Machine Learning Research},
+  volume={16},
+  number={1},
+  pages={77--102},
+  year={2015}
+}
+
+@article{mileyko2011probability,
+  title={Probability Measures on the Space of Persistence Diagrams},
+  author={Mileyko, Yuriy and Mukherjee, Sayan and Harer, John},
+  journal={Inverse Problems},
+  volume={27},
+  number={12},
+  year={2011}
+}
+
+@article{turnerphd,
+  title={Fr{\'e}chet Means for Distributions of Persistence Diagrams},
+  author={Turner, Katharine and Mileyko, Yuriy and Mukherjee, Sayan and Harer, John},
+  journal={Discrete \& Computational Geometry},
+  volume={52},
+  pages={44--70},
+  year={2014}
+}
+
+@article{cohen2007stability,
+  title={Stability of Persistence Diagrams},
+  author={Cohen-Steiner, David and Edelsbrunner, Herbert and Harer, John},
+  journal={Discrete \& Computational Geometry},
+  volume={37},
+  number={1},
+  pages={103--120},
+  year={2007}
+}
+
+@article{seversky2016time,
+  title={On Time-Series Topological Data Analysis: New Data and Opportunities},
+  author={Seversky, Lee M. and Davis, Shelby and Berger, Matthew},
+  journal={Proceedings of CVPR Workshops},
+  year={2016}
+}
+
+% ---------------------------------------------------------------------------
+% T. PERSISTENT HOMOLOGY IN ML
+% ---------------------------------------------------------------------------
+
+@article{corneanu2021ph,
+  title={Computing the Testing Error Without a Testing Set},
+  author={Corneanu, Ciprian A. and Madadi, Meysam and Escalera, Sergio and Martinez, Aleix M.},
+  journal={Proceedings of CVPR},
+  year={2020}
+}
+
+@article{naitzat2020topology,
+  title={Topology of Deep Neural Networks},
+  author={Naitzat, Gregory and Zhitnikov, Andrey and Lim, Lek-Heng},
+  journal={Journal of Machine Learning Research},
+  volume={21},
+  pages={1--40},
+  year={2020}
+}
+
+@article{carlsson2020topological,
+  title={Topological Approaches to Deep Learning},
+  author={Carlsson, Gunnar and Gabrielsson, Rickard Br{\"u}el},
+  journal={Topological Data Analysis},
+  pages={119--146},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{ramamurthy2019topological,
+  title={Topological Data Analysis of Decision Boundaries with Application to Model Selection},
+  author={Ramamurthy, Karthikeyan Natesan and Varshney, Kush and Mody, Krishnaram},
+  journal={Proceedings of ICML},
+  year={2019}
+}
+
+% ---------------------------------------------------------------------------
+% U. ADDITIONAL RECENT WORKS (2024-2025)
+% ---------------------------------------------------------------------------
+
+@article{openai2024o1,
+  title={Learning to Reason with {LLM}s},
+  author={{OpenAI}},
+  journal={Technical Blog Post},
+  year={2024}
+}
+
+@article{geminiteam2024gemini15,
+  title={Gemini 1.5: Unlocking Multimodal Understanding Across Millions of Tokens of Context},
+  author={{Gemini Team}},
+  journal={arXiv preprint arXiv:2403.05530},
+  year={2024}
+}
+
+@article{dubois2024alpacafarm,
+  title={{AlpacaFarm}: A Simulation Framework for Methods that Learn from Human Feedback},
+  author={Dubois, Yann and Li, Xuechen and Taori, Rohan and Zhang, Tianyi and Gulrajani, Ishaan and Ba, Jimmy and Guestrin, Carlos and Liang, Percy and Hashimoto, Tatsunori B.},
+  journal={Proceedings of NeurIPS},
+  year={2023},
+  note={arXiv:2305.14387}
+}
+
+@article{gudhi2024,
+  title={{GUDHI} Library: Simplicial Complexes and Persistent Homology},
+  author={{GUDHI Project}},
+  journal={Software},
+  year={2024},
+  note={\url{https://gudhi.inria.fr/}}
+}
+
+@article{giotto2021,
+  title={giotto-tda: A Topological Data Analysis Toolkit for Machine Learning and Data Exploration},
+  author={Tauzin, Guillaume and Lupo, Umberto and Tunstall, Lewis and others},
+  journal={Journal of Machine Learning Research},
+  volume={22},
+  number={39},
+  pages={1--6},
+  year={2021}
+}
+
+@article{lim2024arena,
+  title={Arena-Hard: A Methodology for Detecting Model Contamination},
+  author={Lim, Derek and others},
+  journal={Technical Report},
+  year={2024}
+}
+
+@article{openai2024simpleqa,
+  title={{SimpleQA}: Measuring Short-Form Factuality in Large Language Models},
+  author={{OpenAI}},
+  journal={Technical Report},
+  year={2024}
+}
+
+@article{recht2019imagenet,
+  title={Do {ImageNet} Classifiers Generalize to {ImageNet}?},
+  author={Recht, Benjamin and Roelofs, Rebecca and Schmidt, Ludwig and Shankar, Vaishaal},
+  journal={Proceedings of ICML},
+  year={2019}
+}
+
+@article{rabanser2019failing,
+  title={Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift},
+  author={Rabanser, Stephan and Günnemann, Stephan and Lipton, Zachary C.},
+  journal={Proceedings of NeurIPS},
+  year={2019}
+}
+
+@article{garg2023irt,
+  title={Are {LLM}s Good at Solving {IRT} Test Items?},
+  author={Garg, Shivam and others},
+  journal={arXiv preprint arXiv:2308.11521},
+  year={2023}
+}
+
+@article{perez2021true,
+  title={True Few-Shot Learning with Language Models},
+  author={Perez, Ethan and Kiela, Douwe and Cho, Kyunghyun},
+  journal={Proceedings of NeurIPS},
+  year={2021}
+}
+
+@article{muennighoff2023mteb,
+  title={{MTEB}: Massive Text Embedding Benchmark},
+  author={Muennighoff, Niklas and Tazi, Nouamane and Magne, Lo{\"i}c and Reimers, Nils},
+  journal={Proceedings of EACL},
+  year={2023}
+}
+
+@article{shen2023largelm,
+  title={Do Large Language Models Know What They Don't Know?},
+  author={Shen, Zhangyue and Zhong, Hongwei and Zhao, Yuxuan and Xu, Ran and Yao, Yaobo and Du, Zhicheng},
+  journal={Findings of ACL},
+  year={2023}
+}

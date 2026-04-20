@@ -1,0 +1,12 @@
+# Exclude large dataset files
+*/data/
+*.arrow
+*.parquet
+*.bin
+*.cache
+
+# Keep documentation, samples, and metadata
+!*.json
+!*.txt
+!README*
+!.gitignore

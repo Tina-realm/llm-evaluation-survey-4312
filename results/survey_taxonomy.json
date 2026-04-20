@@ -1,0 +1,215 @@
+{
+  "taxonomy": {
+    "dimensions": [
+      {
+        "id": 1,
+        "name": "Knowledge and Reasoning",
+        "description": "Evaluation of factual knowledge and reasoning capabilities across domains",
+        "key_benchmarks": ["MMLU", "ARC", "HellaSwag", "BIG-Bench", "GPQA"],
+        "mathematical_basis": ["Accuracy", "Item Response Theory (IRT)", "Calibration"],
+        "representative_papers": [
+          {"title": "Measuring Massive Multitask Language Understanding", "authors": "Hendrycks et al.", "year": 2021, "arxiv": "2009.03300"},
+          {"title": "Beyond the Imitation Game", "authors": "Srivastava et al.", "year": 2022, "arxiv": "2206.04615"},
+          {"title": "Think you have Solved Question Answering?", "authors": "Zellers et al.", "year": 2019, "arxiv": "1905.07830"}
+        ],
+        "strengths": ["Standardized comparison", "Large scale", "Multi-domain coverage"],
+        "limitations": ["Benchmark saturation", "Static nature", "Contamination vulnerability", "Multiple-choice bias"],
+        "gap_connections": ["stability", "contamination"]
+      },
+      {
+        "id": 2,
+        "name": "Code Generation",
+        "description": "Evaluation of program synthesis and code understanding capabilities",
+        "key_benchmarks": ["HumanEval", "MBPP", "CodeContests", "SWE-bench", "DS-1000"],
+        "mathematical_basis": ["Pass@k (unbiased estimator)", "Functional correctness", "Test coverage"],
+        "representative_papers": [
+          {"title": "Evaluating Large Language Models Trained on Code", "authors": "Chen et al.", "year": 2021, "arxiv": "2107.03374"},
+          {"title": "Program Synthesis with Large Language Models", "authors": "Austin et al.", "year": 2021, "arxiv": "2108.07732"},
+          {"title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?", "authors": "Jimenez et al.", "year": 2024, "arxiv": "2310.06770"}
+        ],
+        "strengths": ["Clear ground truth via execution", "Unbiased pass@k estimator", "Functional verification"],
+        "limitations": ["Limited problem diversity", "Contamination risk", "Does not test maintenance/debugging"],
+        "gap_connections": ["composability", "contamination"]
+      },
+      {
+        "id": 3,
+        "name": "Mathematical Reasoning",
+        "description": "Evaluation of mathematical problem-solving and formal reasoning",
+        "key_benchmarks": ["GSM8K", "MATH", "Minerva", "MathVista", "AIME"],
+        "mathematical_basis": ["Exact match", "Symbolic equivalence", "Process verification"],
+        "representative_papers": [
+          {"title": "Training Verifiers to Solve Math Word Problems", "authors": "Cobbe et al.", "year": 2021, "arxiv": "2110.14168"},
+          {"title": "Measuring Mathematical Problem Solving", "authors": "Hendrycks et al.", "year": 2021, "arxiv": "2103.03874"},
+          {"title": "Let's Verify Step by Step", "authors": "Lightman et al.", "year": 2023, "arxiv": "2305.20050"}
+        ],
+        "strengths": ["Unambiguous correctness", "Clear difficulty levels", "Reasoning chain evaluation"],
+        "limitations": ["Format sensitivity", "Narrow problem types", "Saturation at elementary levels"],
+        "gap_connections": ["stability", "composability"]
+      },
+      {
+        "id": 4,
+        "name": "Language Generation Quality",
+        "description": "Evaluation of open-ended text generation including fluency, coherence, and factuality",
+        "key_benchmarks": ["BERTScore", "FActScore", "BLEU", "ROUGE", "MAUVE"],
+        "mathematical_basis": ["n-gram overlap", "Embedding similarity", "Distributional divergence"],
+        "representative_papers": [
+          {"title": "BERTScore: Evaluating Text Generation with BERT", "authors": "Zhang et al.", "year": 2020, "arxiv": "1904.09675"},
+          {"title": "FActScore: Fine-grained Atomic Evaluation of Factual Precision", "authors": "Min et al.", "year": 2023, "arxiv": "2305.14251"},
+          {"title": "MAUVE: Measuring the Gap Between Neural Text and Human Text", "authors": "Pillutla et al.", "year": 2021, "arxiv": "2102.01454"}
+        ],
+        "strengths": ["Automated computation", "Scalable", "Embedding-based metrics capture semantics"],
+        "limitations": ["Poor correlation with human judgment", "Reference-dependent", "Cannot assess factuality reliably"],
+        "gap_connections": ["drift_detection", "composability"]
+      },
+      {
+        "id": 5,
+        "name": "Instruction Following",
+        "description": "Evaluation of ability to follow complex, multi-constraint instructions",
+        "key_benchmarks": ["MT-Bench", "AlpacaEval", "IFEval", "WildBench", "Arena-Hard"],
+        "mathematical_basis": ["Bradley-Terry model", "Elo rating", "Win rate"],
+        "representative_papers": [
+          {"title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", "authors": "Zheng et al.", "year": 2023, "arxiv": "2306.05685"},
+          {"title": "AlpacaEval: An Automatic Evaluator of Instruction-Following Models", "authors": "Li et al.", "year": 2023, "arxiv": "2305.14387"},
+          {"title": "IFEval: Instruction-Following Evaluation", "authors": "Zhou et al.", "year": 2023, "arxiv": "2311.07911"}
+        ],
+        "strengths": ["Human-aligned", "Captures complex preferences", "Scalable via LLM judges"],
+        "limitations": ["Judge bias (position, verbosity, self-enhancement)", "Expensive for human eval", "Transitive inconsistency"],
+        "gap_connections": ["stability", "drift_detection", "composability"]
+      },
+      {
+        "id": 6,
+        "name": "Safety and Alignment",
+        "description": "Evaluation of safety properties including toxicity, bias, and value alignment",
+        "key_benchmarks": ["TruthfulQA", "BBQ", "DecodingTrust", "SafetyBench", "WildGuard"],
+        "mathematical_basis": ["Classification metrics", "Toxicity scoring", "Bias measurement"],
+        "representative_papers": [
+          {"title": "DecodingTrust: A Comprehensive Assessment of Trustworthiness", "authors": "Wang et al.", "year": 2023, "arxiv": "2306.11698"},
+          {"title": "Constitutional AI: Harmlessness from AI Feedback", "authors": "Bai et al.", "year": 2022, "arxiv": "2212.08073"},
+          {"title": "Universal and Transferable Adversarial Attacks on Aligned Language Models", "authors": "Zou et al.", "year": 2023, "arxiv": "2307.15043"}
+        ],
+        "strengths": ["Comprehensive coverage", "Multiple safety dimensions", "Adversarial testing"],
+        "limitations": ["Adversarial fragility", "Context-dependent safety", "Evolving threat landscape"],
+        "gap_connections": ["composability", "failure_modes"]
+      },
+      {
+        "id": 7,
+        "name": "Calibration and Uncertainty",
+        "description": "Evaluation of confidence calibration and uncertainty quantification",
+        "key_benchmarks": ["ECE", "Brier Score", "P(True)", "Conformal Prediction"],
+        "mathematical_basis": ["Probability theory", "Calibration functions", "Conformal inference"],
+        "representative_papers": [
+          {"title": "Language Models (Mostly) Know What They Know", "authors": "Kadavath et al.", "year": 2022, "arxiv": "2207.05221"},
+          {"title": "Conformal Prediction under Ambiguous Ground Truth", "authors": "Stutz et al.", "year": 2023, "arxiv": "2307.09302"},
+          {"title": "Calibrating Large Language Models with Conformal Prediction", "authors": "Kumar et al.", "year": 2023, "arxiv": "2305.03225"}
+        ],
+        "strengths": ["Principled mathematical framework", "Distribution-free guarantees (conformal)", "Actionable for deployment"],
+        "limitations": ["Metric sensitivity to binning", "Limited to probabilistic outputs", "Calibration vs. accuracy tradeoff"],
+        "gap_connections": ["drift_detection", "stability"]
+      },
+      {
+        "id": 8,
+        "name": "Robustness and Adversarial Evaluation",
+        "description": "Evaluation of model robustness to distribution shift and adversarial attack",
+        "key_benchmarks": ["AdvBench", "GCG Attack", "AutoDAN", "PAIR", "TAP"],
+        "mathematical_basis": ["Optimization (GCG)", "Perturbation bounds", "Attack success rate"],
+        "representative_papers": [
+          {"title": "Universal and Transferable Adversarial Attacks", "authors": "Zou et al.", "year": 2023, "arxiv": "2307.15043"},
+          {"title": "AutoDAN: Automatic and Interpretable Adversarial Attacks", "authors": "Zhu et al.", "year": 2023, "arxiv": "2310.15140"},
+          {"title": "Red-Teaming Large Language Models", "authors": "Perez et al.", "year": 2022, "arxiv": "2202.03286"}
+        ],
+        "strengths": ["Tests real vulnerabilities", "Quantifiable attack strength", "Transferability analysis"],
+        "limitations": ["Non-exhaustive coverage", "Arms race dynamics", "Ethical concerns with public disclosure"],
+        "gap_connections": ["stability", "failure_modes"]
+      },
+      {
+        "id": 9,
+        "name": "Contamination Detection",
+        "description": "Methods for detecting benchmark data in training sets",
+        "key_benchmarks": ["MIN-K% PROB", "n-gram overlap", "WIKIMIA", "LLM Decontaminator"],
+        "mathematical_basis": ["Membership inference", "Hypothesis testing", "Information theory"],
+        "representative_papers": [
+          {"title": "Detecting Pretraining Data from Large Language Models", "authors": "Shi et al.", "year": 2023, "arxiv": "2310.16789"},
+          {"title": "Rethinking Benchmark and Contamination for LLMs with Rephrased Samples", "authors": "Yang et al.", "year": 2023, "arxiv": "2311.04850"},
+          {"title": "Benchmark Data Contamination of Large Language Models: A Survey", "authors": "Xu et al.", "year": 2024, "arxiv": "2406.04244"}
+        ],
+        "strengths": ["Automated detection", "Multiple granularities", "Temporal analysis possible"],
+        "limitations": ["Evasion via rephrasing", "False positive/negative tradeoffs", "Access to model internals often needed"],
+        "gap_connections": ["contamination", "stability"]
+      },
+      {
+        "id": 10,
+        "name": "Human Preference Evaluation",
+        "description": "Evaluation via direct human preference judgments and ranking",
+        "key_benchmarks": ["Chatbot Arena", "LMSYS", "RLHF", "DPO"],
+        "mathematical_basis": ["Bradley-Terry model", "Elo rating system", "Thurstone model", "E-values"],
+        "representative_papers": [
+          {"title": "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference", "authors": "Chiang et al.", "year": 2024, "arxiv": "2403.04132"},
+          {"title": "Training language models to follow instructions with human feedback", "authors": "Ouyang et al.", "year": 2022, "arxiv": "2203.02155"},
+          {"title": "Direct Preference Optimization", "authors": "Rafailov et al.", "year": 2023, "arxiv": "2305.18290"}
+        ],
+        "strengths": ["Gold standard for subjective quality", "Captures nuanced preferences", "Dynamic (no contamination)"],
+        "limitations": ["Expensive at scale", "Annotator disagreement", "Demographic bias", "Non-transitive preferences"],
+        "gap_connections": ["drift_detection", "composability"]
+      },
+      {
+        "id": 11,
+        "name": "RAG and Compound System Evaluation",
+        "description": "Evaluation of retrieval-augmented generation and multi-component AI systems",
+        "key_benchmarks": ["RAGAS", "ARES", "LongBench", "KILT"],
+        "mathematical_basis": ["Component-wise metrics", "End-to-end accuracy", "Retrieval precision/recall"],
+        "representative_papers": [
+          {"title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation", "authors": "Es et al.", "year": 2023, "arxiv": "2309.15217"},
+          {"title": "ARES: An Automated Evaluation Framework for RAG Systems", "authors": "Saad-Falcon et al.", "year": 2023, "arxiv": "2311.09476"},
+          {"title": "LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding", "authors": "Bai et al.", "year": 2023, "arxiv": "2308.14508"}
+        ],
+        "strengths": ["End-to-end evaluation", "Component-wise diagnosis", "Real-world relevance"],
+        "limitations": ["Non-composable metrics", "Retrieval-generation entanglement", "Lack of formal guarantees"],
+        "gap_connections": ["composability", "stability"]
+      }
+    ],
+    "cross_cutting_gaps": [
+      {
+        "id": "stability",
+        "name": "Lack of Formal Stability Guarantees",
+        "description": "Current metrics have no formal bounds on how they change under input perturbation",
+        "affected_dimensions": [1, 2, 3, 5, 7, 8, 9],
+        "mathematical_remedy": "Persistent homology stability theorem (Bottleneck stability)"
+      },
+      {
+        "id": "composability",
+        "name": "Non-Composable Evaluations",
+        "description": "Local evaluations cannot be formally combined into consistent global assessments",
+        "affected_dimensions": [2, 3, 4, 5, 6, 10, 11],
+        "mathematical_remedy": "Sheaf theory (gluing axiom, cohomological obstructions)"
+      },
+      {
+        "id": "drift_detection",
+        "name": "No Geometric Framework for Drift Detection",
+        "description": "No principled way to measure how model behavior distributions change over time",
+        "affected_dimensions": [4, 5, 7, 10],
+        "mathematical_remedy": "Information geometry (Fisher-Rao distance on statistical manifolds)"
+      },
+      {
+        "id": "failure_modes",
+        "name": "Invisible Structural Failure Modes",
+        "description": "Pointwise metrics miss systematic patterns of correlated failures",
+        "affected_dimensions": [6, 8],
+        "mathematical_remedy": "TDA on failure landscapes (persistent homology of error patterns)"
+      },
+      {
+        "id": "contamination",
+        "name": "Surface-Level Contamination Detection",
+        "description": "Current methods detect contamination at string/embedding level, missing structural signals",
+        "affected_dimensions": [1, 2, 9],
+        "mathematical_remedy": "Random matrix theory (spectral anomaly detection via Marchenko-Pastur)"
+      },
+      {
+        "id": "unifying_framework",
+        "name": "No Unifying Mathematical Framework",
+        "description": "Each evaluation dimension uses ad-hoc metrics without common mathematical language",
+        "affected_dimensions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "mathematical_remedy": "Category-theoretic unification via sheaves and functorial evaluation"
+      }
+    ]
+  }
+}
