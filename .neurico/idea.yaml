@@ -1,0 +1,306 @@
+idea:
+  title: 'Mathematically Grounded Evaluation of Large Language Models: A Survey and
+    New Directions'
+  domain: artificial_intelligence
+  hypothesis: "Current LLM evaluation methods lack formal mathematical foundations,\
+    \ leading to\nbrittle metrics, non-composable guarantees, and inability to detect\
+    \ systematic\nfailure modes. By applying tools from topology (persistent homology),\
+    \ algebraic\ngeometry (sheaf theory), information geometry (Fisher metric), and\
+    \ spectral\nanalysis (random matrix theory), we can construct evaluation frameworks\
+    \ that\nprovide formal guarantees, detect structural drift, compose local evaluations\n\
+    into global ones, and identify contamination \u2014 addressing fundamental gaps\
+    \ that\nno existing method resolves.\n"
+  background:
+    description: 'The evaluation of large language models has become a critical bottleneck
+      in AI
+
+      development. Despite rapid progress in model capabilities, evaluation methodology
+
+      remains fragmented: static benchmarks saturate quickly, human evaluation is
+      expensive
+
+      and subjective, automated metrics correlate poorly with true quality, and production
+
+      monitoring lacks formal guarantees.
+
+
+      This paper bridges two communities: (1) the empirical AI evaluation community,
+      which
+
+      has developed practical but mathematically informal methods, and (2) the mathematical
+
+      sciences, which offer powerful formal tools that have not yet been systematically
+
+      applied to LLM evaluation.
+
+
+      The survey component (Part I) provides a comprehensive taxonomy of existing
+      evaluation
+
+      methods across 11 dimensions, serving as a reference for the community. The
+      critical
+
+      analysis (Part II) identifies cross-cutting gaps. The novel directions (Part
+      III)
+
+      propose five mathematically rigorous frameworks that address these gaps, each
+      grounded
+
+      in established mathematical theory with clear paths to implementation.
+
+
+      Target venues: ACM Computing Surveys, TMLR, or standalone arXiv preprint (cs.AI/cs.CL/cs.LG).
+
+      Target length: 25-30 pages single-column, 150+ references.
+
+      '
+    papers:
+    - url: https://arxiv.org/abs/2009.03300
+      description: MMLU benchmark (Hendrycks et al., 2021) - massive multitask language
+        understanding
+    - url: https://arxiv.org/abs/2107.03374
+      description: HumanEval (Chen et al., 2021) - code generation benchmark
+    - url: https://arxiv.org/abs/2211.09110
+      description: HELM (Liang et al., 2022) - holistic evaluation framework
+    - url: https://arxiv.org/abs/2206.04615
+      description: BIG-Bench (Srivastava et al., 2022) - beyond imitation game benchmark
+    - url: https://arxiv.org/abs/2110.14168
+      description: GSM8K (Cobbe et al., 2021) - grade school math benchmark
+    - url: https://arxiv.org/abs/2203.02155
+      description: RLHF (Ouyang et al., 2022) - InstructGPT training from human feedback
+    - url: https://arxiv.org/abs/2305.18290
+      description: DPO (Rafailov et al., 2023) - direct preference optimization
+    - url: https://arxiv.org/abs/2403.04132
+      description: Chatbot Arena (Chiang et al., 2024) - open platform for LLM evaluation
+    - url: https://arxiv.org/abs/1904.09675
+      description: BERTScore (Zhang et al., 2020) - embedding-based evaluation
+    - url: https://arxiv.org/abs/2306.05685
+      description: Judging LLM-as-a-Judge (Zheng et al., 2023) - MT-Bench
+    - url: https://arxiv.org/abs/2307.15043
+      description: Universal and Transferable Adversarial Attacks on LLMs (Zou et
+        al., 2023)
+    - url: https://arxiv.org/abs/2309.01446
+      description: Red-teaming survey for foundation models
+    - url: https://arxiv.org/abs/2307.09302
+      description: Conformal prediction for LLMs - calibrated uncertainty sets
+    - url: https://arxiv.org/abs/2207.05221
+      description: Language model calibration survey
+    - url: https://arxiv.org/abs/2311.05232
+      description: Survey on hallucination in LLMs (Huang et al., 2023)
+    - url: https://arxiv.org/abs/2309.11206
+      description: FActScore - fine-grained atomic evaluation of factual precision
+    - url: https://arxiv.org/abs/2309.15217
+      description: RAGAS - automated evaluation of RAG pipelines
+    - url: https://arxiv.org/abs/2311.09476
+      description: ARES - automated RAG evaluation system
+    - url: https://arxiv.org/abs/2212.08073
+      description: Constitutional AI (Bai et al., 2022)
+    - url: https://arxiv.org/abs/2306.09442
+      description: DecodingTrust - comprehensive trustworthiness evaluation
+    - url: https://arxiv.org/abs/2004.10229
+      description: Persistent homology and TDA survey (Hensel et al., 2021)
+    - url: https://arxiv.org/abs/1710.04019
+      description: Topological data analysis for ML (Carlsson, 2020)
+    - url: https://arxiv.org/abs/2012.10714
+      description: Sheaves in topological data analysis
+    - url: https://arxiv.org/abs/1808.08271
+      description: Information geometry and natural gradient methods
+    - url: https://arxiv.org/abs/2311.04850
+      description: Detecting benchmark contamination in LLMs
+    - url: https://arxiv.org/abs/2310.16789
+      description: Time Travel in LLMs - tracing data contamination
+    - url: https://arxiv.org/abs/2302.06476
+      description: Holistic evaluation of text generation systems in industry
+    datasets:
+    - name: MMLU Results Archive
+      source: https://github.com/hendrycks/test
+      description: Collected model performance data on MMLU for trend analysis
+      size: 57 subjects, 100+ model results
+    - name: Chatbot Arena Logs
+      source: https://huggingface.co/datasets/lmsys/chatbot_arena_conversations
+      description: Human preference data from Chatbot Arena for ELO analysis
+      size: 500K+ conversations
+    - name: HELM Benchmark Results
+      source: https://crfm.stanford.edu/helm/latest/
+      description: Comprehensive model evaluation results across scenarios
+      size: Multiple models x scenarios
+  methodology:
+    approach: 'Three-part paper combining systematic literature survey, critical gap
+      analysis,
+
+      and novel mathematical framework proposals. The survey uses a structured taxonomy
+
+      covering 11 evaluation dimensions. Novel directions are developed at extended-abstract
+
+      depth with formal definitions, theorems, and implementation sketches.
+
+      '
+    steps:
+    - Conduct systematic literature review of LLM evaluation methods (2020-2025)
+    - Develop taxonomy covering 11 evaluation dimensions with consistent structure
+    - 'For each dimension: summarize methods, mathematical foundations, strengths,
+      limitations'
+    - Create comparison tables for each section (method, measures, math basis, limitations)
+    - Identify representative papers and ensure coverage of most recent work (2023-2025)
+    - Synthesize cross-cutting limitations from survey findings
+    - 'Identify 6 major gaps: lack of unifying frameworks, brittleness under shift,
+      etc.'
+    - Connect gaps to formal mathematical concepts that could address them
+    - Develop topological drift detection framework using persistent homology
+    - Formalize sheaf-theoretic compositional evaluation with cohomological obstructions
+    - Define information-geometric evaluation manifolds with Fisher metric
+    - Apply persistent homology to failure mode landscape analysis
+    - Propose spectral methods for contamination detection via random matrix theory
+    - 'For each: provide motivation, formal setup, key definitions/theorems, implementation
+      notes'
+    - Write in formal academic style (LaTeX, single-column, 25-30 pages)
+    - Create unified notation table
+    - Compile 150+ references with emphasis on 2023-2025 works
+    - Ensure clear demarcation between survey of existing work and novel proposals
+    baselines:
+    - Existing survey papers on LLM evaluation (e.g., Chang et al. 2023 survey)
+    - HELM framework paper as example of comprehensive evaluation
+    - TDA application papers in ML as precedent for mathematical tools
+    metrics:
+    - 'Coverage: number of evaluation dimensions and methods surveyed'
+    - 'Currency: fraction of citations from 2023-2025'
+    - 'Mathematical rigor: formal definitions, theorem statements, proof sketches'
+    - 'Novelty: number of original framework proposals with formal detail'
+    - 'Utility: actionable comparison tables and taxonomy'
+    - 'Reference count: target 150+'
+    - 'Page count: target 25-30 single-column pages'
+  constraints:
+    compute: cpu_only
+    time_limit: 14400
+    memory: 16GB
+    dependencies:
+    - numpy
+    - scipy
+    - matplotlib
+    - seaborn
+    - networkx
+    - scikit-learn
+    - gudhi
+    - ripser
+    - persim
+    - giotto-tda
+    - sympy
+    - tikzplotlib
+  expected_outputs:
+  - type: report
+    format: pdf
+    description: 'Complete survey paper in LaTeX format (25-30 pages single-column):
+
+      - Abstract, introduction, and paper overview
+
+      - Part I: Systematic survey with 11 evaluation dimension sections
+
+      - Part II: Critical gap analysis (6 major gaps identified)
+
+      - Part III: 5 novel mathematically grounded evaluation frameworks
+
+      - Conclusion and future work
+
+      - Unified notation table
+
+      - 150+ references
+
+      '
+  - type: code
+    format: python
+    description: 'Proof-of-concept implementations for Part III proposals:
+
+      - Persistent homology computation on embedding spaces (drift detection)
+
+      - Sheaf construction over task decomposition graphs
+
+      - Information-geometric distance computation on behavior distributions
+
+      - TDA analysis of failure mode clustering
+
+      - Spectral analysis of performance matrices for contamination signals
+
+      '
+  - type: visualization
+    format: png
+    description: 'Figures for the paper:
+
+      - Taxonomy diagram of evaluation dimensions
+
+      - Comparison tables (rendered as figures where needed)
+
+      - Persistence diagrams showing embedding drift
+
+      - Sheaf diagram over task decomposition
+
+      - Statistical manifold illustration
+
+      - Spectral analysis plots (eigenvalue distributions)
+
+      - Timeline of benchmark saturation
+
+      '
+  - type: data
+    format: json
+    description: 'Structured survey data:
+
+      - Method taxonomy with metadata per entry
+
+      - Citation database with categorization
+
+      - Comparison table data for each survey section
+
+      '
+  evaluation_criteria:
+  - Survey covers all 11 evaluation dimensions with consistent depth and structure
+  - Each survey section includes a summary comparison table
+  - At least 150 references cited, with >40% from 2023-2025
+  - Part III proposals include formal mathematical definitions (not hand-waving)
+  - 'Each novel direction has: motivation, formal setup, key theorem/definition, implementation
+    notes'
+  - Clear distinction between surveyed existing work and original contributions
+  - Unified notation table is complete and consistent throughout
+  - Paper is formatted correctly in LaTeX suitable for arXiv submission
+  - Writing style is appropriate for ACM Computing Surveys / TMLR
+  - Sheaf-theoretic framework correctly uses cohomological obstruction theory
+  - TDA proposals connect to stability theorems (e.g., stability of persistence diagrams)
+  - Information-geometric framework correctly uses Fisher information metric
+  - Spectral methods connect to random matrix theory (Marchenko-Pastur, Tracy-Widom)
+  metadata:
+    author: Lei Yang
+    tags:
+    - llm-evaluation
+    - survey
+    - topological-data-analysis
+    - persistent-homology
+    - sheaf-theory
+    - information-geometry
+    - algebraic-geometry
+    - benchmark-contamination
+    - spectral-methods
+    - evaluation-frameworks
+    - mathematical-foundations
+    - rag-evaluation
+    - calibration
+    - robustness
+    priority: high
+    estimated_duration: 4 hours
+    paper_style: neurips
+    notes: "This is a survey + perspectives paper combining comprehensive literature\
+      \ review\nwith novel mathematical framework proposals. The unique angle is bridging\
+      \ formal\nmathematics (topology, algebraic geometry, information geometry) with\
+      \ practical\nAI evaluation \u2014 reflecting the author's background in algebraic\
+      \ geometry and\nindustry AI evaluation infrastructure.\n\nKey considerations:\n\
+      - The survey portion should be genuinely useful as a standalone reference\n\
+      - Novel directions should be at \"extended abstract\" depth \u2014 enough for\
+      \ feasibility\n  and novelty, not full proofs\n- Prioritize mathematical precision\
+      \ in Part III (formal definitions, theorem statements)\n- Ensure practical grounding:\
+      \ connect theoretical proposals to production systems\n- The paper bridges two\
+      \ communities; writing should be accessible to both\n- Use LaTeX with standard\
+      \ packages (amsmath, amsthm, tikz, algorithm2e)\n- Target arXiv categories:\
+      \ cs.AI, cs.CL, cs.LG\n"
+    idea_id: mathematically_grounded_evalua_20260420_121058_062e9f03
+    created_at: '2026-04-20T12:10:58.089520'
+    status: submitted
+    github_repo_name: llm-evaluation-survey-4312
+    github_repo_url: https://github.com/Tina-realm/llm-evaluation-survey-4312
